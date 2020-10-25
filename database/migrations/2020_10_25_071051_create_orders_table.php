@@ -15,11 +15,11 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             // $table->id();
-            $table->uuid('id')->primary();
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->double('cost', 15, 8);
-            $table->uuid('coupon_id');
-            $table->uuid('delivery_address');
+            $table->integer('coupon_id')->unsigned();
+            $table->integer('delivery_detail_id')->unsigned();
             $table->tinyInteger('payment_type_id')->unsigned();
             $table->tinyInteger('booking_status_id')->unsigned();
             $table->timestamps();

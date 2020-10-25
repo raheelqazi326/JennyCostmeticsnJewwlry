@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderStatusesTable extends Migration
+class CreatePhonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateOrderStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_statuses', function (Blueprint $table) {
-            $table->tinyIncrements('id');
-            $table->string('status', 40);
-            $table->string('message', 100)->nullable();
+        Schema::create('phones', function (Blueprint $table) {
+            $table->increments('id');
+            $table->morphs('refModule');
+            $table->enum('type', ['phone', 'work', 'other'])->default('phone');
+            $table->bigInteger('number', 13)->unsigned();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateOrderStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_statuses');
+        Schema::dropIfExists('phones');
     }
 }

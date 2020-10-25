@@ -14,7 +14,12 @@ class CreateMaintenancesTable extends Migration
     public function up()
     {
         Schema::create('maintenances', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->morphs('module');
+            $table->string('column')->nullable();
+            $table->string('route')->nullable();
+            $table->text('exception')->nullable();
+            $table->enum('status', ['pending', 'in progress', 'resolved'])->default('pending');
             $table->timestamps();
         });
     }

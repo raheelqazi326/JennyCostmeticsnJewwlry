@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRatingsTable extends Migration
+class CreateDeliveryDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateRatingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ratings', function (Blueprint $table) {
+        Schema::create('delivery_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_id')->unsigned();
-            $table->enum('rating', ['1', '2', '3', '4', '5'])->default('1');
-            $table->text('review')->nullable();
+            $table->string('person_name', 150);
+            $table->string('address', 255);
+            $table->smallInteger('state_id')->unsigned();
+            $table->smallInteger('city_id')->unsigned();
+            $table->string('zipcode', 10);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateRatingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ratings');
+        Schema::dropIfExists('delivery_details');
     }
 }

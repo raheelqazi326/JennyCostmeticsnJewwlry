@@ -14,7 +14,12 @@ class CreateCouponsTable extends Migration
     public function up()
     {
         Schema::create('coupons', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->enum('discount_type', ['percent', 'fixed'])->default('fixed');
+            $table->double('discount', 15, 8);
+            $table->double('minimum_amount', 15, 8);
+            $table->dateTime('expire_at');
+            $table->enum('status', ['active', 'deactive', 'expire'])->default('active');
             $table->timestamps();
         });
     }

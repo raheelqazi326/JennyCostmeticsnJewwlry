@@ -14,7 +14,8 @@ class CreateBackupsTable extends Migration
     public function up()
     {
         Schema::create('backups', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('path');
             $table->timestamps();
         });
     }
