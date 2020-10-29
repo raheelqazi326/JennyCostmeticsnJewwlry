@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeliveryDetailsTable extends Migration
+class CreateContactDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateDeliveryDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_details', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('person_name', 150);
+        Schema::create('contact_details', function (Blueprint $table) {
+            $table->tinyIncrements('id');
             $table->string('line_1', 255);
             $table->string('line_2', 255);
             $table->smallInteger('city_id')->unsigned();
             $table->string('zipcode', 10);
+            $table->string('email', 25);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateDeliveryDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_details');
+        Schema::dropIfExists('contact_details');
     }
 }

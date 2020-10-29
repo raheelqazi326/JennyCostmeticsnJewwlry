@@ -16,9 +16,10 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id')->unsigned();
+            $table->integer('brand_id')->unsigned();
             $table->string('name', 100);
             $table->text('description')->default('');
-            $table->tinyInteger('stock', 5);
+            $table->smallInteger('stock');
             $table->enum('status', ['active', 'deactive', 'out of stock'])->default('active');
             $table->dateTime('expire_at')->nullable();
             $table->timestamps();

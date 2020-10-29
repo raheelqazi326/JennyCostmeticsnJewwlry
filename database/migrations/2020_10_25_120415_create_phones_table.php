@@ -16,8 +16,8 @@ class CreatePhonesTable extends Migration
         Schema::create('phones', function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('refModule');
-            $table->enum('type', ['phone', 'work', 'other'])->default('phone');
-            $table->bigInteger('number', 13)->unsigned();
+            // $table->enum('type', ['phone', 'work', 'other'])->default('phone');
+            $table->bigInteger('number');
             $table->timestamps();
         });
     }

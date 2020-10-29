@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreatePricingListTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 40)->unique();
-            $table->enum('main_category', ['cosmetics', 'jewelry']);
+        Schema::create('pricing_list_tags', function (Blueprint $table) {
+            $table->smallInteger('tag_id')->unsigned();
+            $table->tinyInteger('pricing_list_id')->unsigned();
+            $table->primary(['tag_id', 'pricing_list_id']);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('pricing_list_tags');
     }
 }

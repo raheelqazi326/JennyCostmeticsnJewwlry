@@ -16,8 +16,10 @@ class CreateRatingsTable extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id')->unsigned();
+            $table->text('title');
             $table->enum('rating', ['1', '2', '3', '4', '5'])->default('1');
-            $table->text('review')->nullable();
+            $table->text('review');
+            $table->text('name');
             $table->timestamps();
         });
     }
