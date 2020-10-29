@@ -21,9 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('status', ['not-verified','active', 'deactive', 'suspened'])->nullable()->default('not-verified');
-            $table->smallInteger('state_id')->unsigned();
-            $table->string('zipcode', 10);
+            $table->enum('status', ['not-verified','active', 'deactive', 'suspened'])->default('not-verified');
+            $table->string('image', 50)->nullable();
+            $table->smallInteger('state_id')->unsigned()->nullable();
+            $table->string('zipcode', 10)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
