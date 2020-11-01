@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         //
         $role = Role::where('name', 'admin')->first();
         $user = new User;
-        $user->role_id = $role->name;
+        $user->role_id = $role->id;
         $user->name = 'admin';
         $user->email = 'admin@'.env('APP_Domain_Name');
         $user->password = bcrypt('123456');
