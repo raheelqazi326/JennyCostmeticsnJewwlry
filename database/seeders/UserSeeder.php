@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         $user->role_id = $role->id;
         $user->name = 'admin';
         $user->email = 'admin@'.env('APP_Domain_Name');
-        $user->password = bcrypt('123456');
+        $user->password = '$2y$10$ljTBVFWcsYsbjlM0nAAN0OvUCNafcWg4fkk0n6F.y3vOi4Is1.jaO'; // by default hashed value of 123456
         $user->status = 'active';
         $user->save();
         // $user = 

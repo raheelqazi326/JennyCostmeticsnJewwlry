@@ -19,7 +19,7 @@
         </nav>
         {{ $slot }}
         @livewireScripts
-        <script src="{{ asset('vendor\js\require.js') }}"></script>
-        <script src="{{ asset('vendor\js\app.js') }}"></script>
+        <script src="{{ asset('vendor/js/turbolinks.js') }}"></script>
+        <script src="{{ asset('vendor/js/alpine.js') }}"></script>
     </body>
 </html>

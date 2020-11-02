@@ -22,10 +22,23 @@ Route::get('/about-us', 'AboutUs');
 Route::get('/products', 'Products');
 Route::get('/product', 'Product');
 Route::get('/faq', 'Faq');
-Route::get('/login', 'Login');
+Route::get('/login', 'Login')->name('login');
 Route::get('/register', 'Register');
 Route::get('/checkout', 'Checkout');
 Route::get('/cart', 'Cart');
 Route::get('/contact', 'Contact');
 Route::get('/price-lists', 'PriceList');
 Route::get('/forgot-password', 'ForgotPassword');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('login', 'Login')->name('admin.login');
+    });
+    Route::group(['middleware' => 'admin'], function () {
+        Route::get('dashboard', 'Home')->name('admin.home');
+        Route::get('logout', function(){
+            auth('admin')->logout();
+            return redirect()->route('admin.login');
+        })->name('admin.logout');
+    });
+});
