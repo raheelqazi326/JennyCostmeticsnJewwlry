@@ -35,7 +35,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('login', 'Login')->name('admin.login');
     });
     Route::group(['middleware' => 'admin'], function () {
-        Route::get('dashboard', 'Home')->name('admin.home');
+        Route::get('/', 'Home')->name('admin.home');
+        Route::get('category', 'Category')->name('admin.category');
+        Route::get('/category/add', 'AddCategory')->name('admin.addcategory');
+        Route::get('/category/{id}', 'EditCategory')->name('admin.editcategory');
         Route::get('logout', function(){
             auth('admin')->logout();
             return redirect()->route('admin.login');

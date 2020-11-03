@@ -4,7 +4,7 @@
         <form wire:submit.prevent="save">
             @include('layouts.messages')
             <div class="input-group">
-                <input type="email" class="form-control" placeholder="Email" wire:model.debounce="form.email">
+                <input type="email" class="form-control" placeholder="Email" wire:model.lazy="form.email">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-envelope"></span>
@@ -15,7 +15,7 @@
                 <span class="text-danger">{{ $message }}</span>
             @enderror
             <div class="input-group mt-3">
-                <input type="password" class="form-control" placeholder="Password" wire:model.debounce="form.password">
+                <input type="password" class="form-control" placeholder="Password" wire:model.lazy="form.password">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-lock"></span>

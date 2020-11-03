@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name', 40)->unique();
             $table->enum('main_category', ['cosmetics', 'jewelry']);
+            $table->enum('status', ['active', 'deactive'])->default('active');
             $table->timestamps();
         });
     }
