@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
     <head>
         <title>Diana - Creative Shop Template</title>
-        <script src="cdn-cgi/apps/head/sxN6HgCn8v7CG45Nsym8imDXilk.js"></script>
+        {{-- <script src="cdn-cgi/apps/head/sxN6HgCn8v7CG45Nsym8imDXilk.js"></script> --}}
         <link rel="stylesheet" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
@@ -11,7 +11,7 @@
         @livewireStyles
     </head>
     <body class="ct-headroom--scrollUpBoth cssAnimate">
-        <div class="ct-preloader"><div class="ct-preloader-content"></div></div>
+        {{-- <div class="ct-preloader"><div class="ct-preloader-content"></div></div>
             <nav class="ct-menuMobile">
                 <ul class="ct-menuMobile-navbar">
                     <li class="dropdown">
@@ -79,11 +79,11 @@
                     <li><a href="contact.html"><i class="fa fa-phone-square fa-fw"></i> Contact</a></li>
                 </ul>
             </nav>
-        </div>
+        </div> --}}
         <div class="ct-shopMenuMobile">
             <nav class="ct-shopMenuMobile-navbar">
                 <ul class="list-unstyled">
-                    <li><a href="login.html"><i class="fa fa-user fa-fw"></i> Login</a></li>
+                    <li><a href="/login"><i class="fa fa-user fa-fw"></i> Login</a></li>
                     <li><a href="create-account.html"><i class="fa fa-pencil fa-fw"></i> Create an account</a></li>
                     <li><a href="my-account.html"><i class="fa fa-cog fa-fw"></i> My Account</a></li>
                     <li><a href="wishlist.html"><i class="fa fa-edit fa-fw"></i> Wishlist</a></li>
@@ -132,7 +132,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index-2.html"><img src="assets/images/demo-content/logo.png" alt="Diana Logo"> </a>
+                <a class="navbar-brand" href="/"><img src="assets/images/demo-content/logo.png" alt="Diana Logo"> </a>
                 <button type="button" class="navbarShop-toggle">
                     <i class="fa fa-fw fa-user"></i>
                 </button>
@@ -144,13 +144,13 @@
                     <div class="ct-topBar-navigation pull-left">
                         <ul class="list-unstyled">
                             <li><i class="fa fa-fw fa-phone"></i> Call us: (012) 345-6789</li>
-                            <li><a href="login.html"><i class="fa fa-fw fa-user"></i> Login</a></li>
-                            <li><a href="create-account.html"><i class="fa fa-fw fa-pencil"></i> Create an account</a></li>
+                            <li><a href="/login"><i class="fa fa-fw fa-user"></i> Login</a></li>
+                            <li><a href="/register"><i class="fa fa-fw fa-pencil"></i> Create an account</a></li>
                         </ul>
                     </div>
                     <div class="pull-right">
                         <div class="ct-topBar-basket">
-                            <a href="my-cart.html"><span class="ct-topBar-basket-cart"><i class="fa fa-fw fa-shopping-cart"></i> Cart: </span><span class="ct-topBar-basket-quantity">3 item(s)</span><span class="ct-topBar-basket-price"> - $0.00</span></a>
+                            <a href="/cart"><span class="ct-topBar-basket-cart"><i class="fa fa-fw fa-shopping-cart"></i> Cart: </span><span class="ct-topBar-basket-quantity">3 item(s)</span><span class="ct-topBar-basket-price"> - $0.00</span></a>
                             <div class="ct-topBar-basket-info">
                                 <div class="ct-cartItem">
                                     <a href="single-product.html">
@@ -187,15 +187,35 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="ct-cartGoNext text-uppercase ct-u-paddingBoth20">
-                                    <a class="btn btn-default ct-u-width-49pc" href="my-cart.html" role="button">View Cart <i class="fa fa-angle-double-right fa-fw"></i></a>
-                                    <a class="btn btn-default pull-right ct-u-width-49pc" href="checkout.html" role="button">Checkout <i class="fa fa-angle-double-right fa-fw"></i></a>
+                                    <a class="btn btn-default ct-u-width-49pc" href="/cart" role="button">View Cart <i class="fa fa-angle-double-right fa-fw"></i></a>
+                                    <a class="btn btn-default pull-right ct-u-width-49pc" href="{{ url('/checkout') }}" role="button">Checkout <i class="fa fa-angle-double-right fa-fw"></i></a>
                                 </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    EN <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">FR</a></li>
+                                    <li><a href="#">ES</a></li>
+                                    <li><a href="#">DE</a></li>
+                                    <li><a href="#">PT</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    $ <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">EUR €</a></li>
+                                    <li><a href="#">GBP £</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ct-headerWrapper ct-u-paddingBottom40">
+            <div class="ct-headerWrapper ct-u-paddingBottom40 ct-u-marginBottom40">
                 <div class="container">
 
                     <div class="ct-header ct-header--secondary ct-u-paddingTop30 ct-u-paddingBottom50">
@@ -203,11 +223,11 @@
                             <ul class="list-unstyled list-inline">
                                 <li><a href="my-account.html">My Account</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="/checkout">Checkout</a></li>
                             </ul>
                         </div>
                         <div class="ct-header-logo">
-                            <a href="index-2.html">
+                            <a href="/">
                                 <img src="assets/images/demo-content/logo.png" alt="Diana Logo">
                             </a>
                         </div>
@@ -283,7 +303,7 @@
                                                         <li><a href="checkout.html"><i class="fa fa-angle-right fa-fw"></i> Checkout</a></li>
                                                         <li><a href="wishlist.html"><i class="fa fa-angle-right fa-fw"></i> Wishlist</a></li>
                                                         <li><a href="create-account.html"><i class="fa fa-angle-right fa-fw"></i> Register</a></li>
-                                                        <li><a href="login.html"><i class="fa fa-angle-right fa-fw"></i> Login</a></li>
+                                                        <li><a href="/login"><i class="fa fa-angle-right fa-fw"></i> Login</a></li>
                                                         <li><a href="lost-password.html"><i class="fa fa-angle-right fa-fw"></i> Lost Password</a></li>
                                                     </ul>
                                                 </div>
@@ -340,7 +360,7 @@
                                     <li><a href="blog-masonry.html">2 Columns</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="/contact">Contact</a></li>
                         </ul>
                         <div id="ct-js-navSearch" class="ct-navbar-navSearch navbar-search pull-right">
                             <i class="fa fa-fw fa-search"></i>
