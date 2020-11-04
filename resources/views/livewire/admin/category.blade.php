@@ -77,6 +77,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Main Category</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -87,6 +88,7 @@
                                             <tr>
                                                 <td>{{ $loop->index+1 }}</td>
                                                 <td>{{ $category->name }}</td>
+                                                <td>{{ $category->main_category }}</td>
                                                 <td><span class="badge badge-success">Approved</span></td>
                                                 <td>
                                                 <a href=""><i class="fas fa-edit text-warning" aria-hidden="true"></i></a>
@@ -95,6 +97,7 @@
                                             </tr>
                                         @endforeach    
                                     @endif
+
                                 </tbody>
                             </table>
                         </div>
