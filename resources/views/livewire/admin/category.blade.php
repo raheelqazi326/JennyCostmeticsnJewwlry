@@ -28,13 +28,18 @@
                                 <div class="col-5">
                                     <label class="enteries">
                                         Show
-                                        <select class="custom-select custom-select-sm form-control form-control-sm" style="width:35%">
+                                        <select class="custom-select custom-select-sm form-control form-control-sm" wire:model='perPage' style="width:35%">
                                             <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
                                             <option value="10">10</option>
+                                            <option value="11">11</option>
                                             <option value="25">25</option>
                                             <option value="50">50</option>
                                             <option value="100">100</option>
-                                            <option value="100">All</option>
+                                            @if (!empty($categories))
+                                            <option value="{{$categories->total()}}">All</option>
+                                            @endif
                                         </select>
                                         entries
                                     </label>
@@ -47,7 +52,15 @@
                                 <div class="col-5">
                                     <div class="card-tools">
                                         <div class="input-group input-group-sm" style="width: 150px;margin-left:60%;">
-                                            <input type="text" class="form-control float-right" placeholder="Search">
+                                            <input 
+                                                type="text"
+                                                class="form-control float-right" 
+                                                wire:model='search'
+                                                wire:keydown.escape='resetSearch'
+                                                wire:keydown.tab='resetSearch'
+                                                wire:keydown.enter='resetSearch'
+                                                placeholder="Search"
+                                             >
                 
                                             {{-- <div class="input-group-append">
                                                 <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
@@ -69,42 +82,45 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
-                                        <tr>
-                                            <td>{{ $loop->index+1 }}</td>
-                                            <td>{{ $category->name }}</td>
-                                            <td><span class="badge badge-success">Approved</span></td>
-                                            <td>
-                                                <i class="fas fa-edit text-warning" aria-hidden="true"></i>
-                                                <i class="fas fa-trash text-danger ml-2" aria-hidden="true"></i>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    @if (!empty($categories))
+                                        @foreach ($categories as $category)
+                                            <tr>
+                                                <td>{{ $loop->index+1 }}</td>
+                                                <td>{{ $category->name }}</td>
+                                                <td><span class="badge badge-success">Approved</span></td>
+                                                <td>
+                                                <a href=""><i class="fas fa-edit text-warning" aria-hidden="true"></i></a>
+                                                    <i class="fas fa-trash text-danger ml-2" aria-hidden="true"></i>
+                                                </td>
+                                            </tr>
+                                        @endforeach    
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
                         <!-- card-body -->
                         <!-- card-footer -->
                         <div class="card-footer">
-                            <div class="card-tools row">
-                                <div class="col-6">
-                                    <p>
-                                        <b>2</b>
-                                        out of 
-                                        <b>40</b>
-                                    </p>
+                            @if (!empty($categories))
+                                <div class="card-tools row">
+                                    <div class="col-6">
+                                        <p>
+                                            Showing 
+                                            <b>{{$categories->firstItem()}}</b>
+                                            to 
+                                            <b>{{$categories->lastItem()}}</b>
+                                            out of 
+                                        <b>{{$categories->total()}}</b>
+                                        </p>
 
+                                    </div>
+                                    <div class="col-6 ">
+                                        <div class="float-right">
+                                        {{$categories->links()}}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-6">
-                                    <ul class="pagination pagination-sm float-right">
-                                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @endif
                         </div>
                         <!-- card-footer -->
                     </div>
