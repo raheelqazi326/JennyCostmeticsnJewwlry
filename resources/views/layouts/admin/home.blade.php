@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/dist/css/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     @livewireStyles
+    @livewireScripts
     <style>
         label.enteries {
             font-weight: normal;
@@ -206,7 +207,6 @@
 
     <!-- PAGE SCRIPTS -->
     {{-- <script src="{{ asset('admin_assets/dist/js/pages/dashboard2.js') }}"></script> --}}
-    @livewireScripts
 </body>
 
 </html>

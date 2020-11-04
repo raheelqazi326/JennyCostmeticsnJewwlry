@@ -30,9 +30,21 @@
                         <form wire:submit.prevent="save">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label>Name</label>
                                     <input type="text" class="form-control" placeholder="Enter name of category" wire:model="name">
                                     @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Main Category</label>
+                                    <select class="form-control" wire:model="main_category">
+                                        <option>Please select an option</option>
+                                        @foreach ($main_categories as $category)
+                                            <option value="{{ $category }}">{{$category}}</option> 
+                                        @endforeach
+                                    </select>
+                                    @error('main_category')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

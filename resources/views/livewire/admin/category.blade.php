@@ -29,7 +29,7 @@
                                     <label class="enteries">
                                         Show
                                         <select class="custom-select custom-select-sm form-control form-control-sm" style="width:35%">
-                                            <option value="1">1</option>
+                                            <option value="1">2</option>
                                             <option value="10">10</option>
                                             <option value="25">25</option>
                                             <option value="50">50</option>
@@ -64,6 +64,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Main Category</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -73,6 +74,7 @@
                                         <tr>
                                             <td>{{ $loop->index+1 }}</td>
                                             <td>{{ $category->name }}</td>
+                                            <td>{{ $category->main_category }}</td>
                                             <td><span class="badge badge-success">Approved</span></td>
                                             <td>
                                                 <i class="fas fa-edit text-warning" aria-hidden="true"></i>
