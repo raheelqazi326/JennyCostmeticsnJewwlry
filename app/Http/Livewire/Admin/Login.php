@@ -21,7 +21,7 @@ class Login extends Component
     protected $messages = [
         "form.email.required" => "Email Address is required",
         "form.email.email" => "Email format in invalid",
-        "form.email.exists" => "Email format not found",
+        "form.email.exists" => "Email Address not found",
         "form.password.required" => "Password is required"
     ];
 

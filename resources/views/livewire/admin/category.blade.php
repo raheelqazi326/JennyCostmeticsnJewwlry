@@ -86,12 +86,14 @@
                                     @if (!empty($categories))
                                         @foreach ($categories as $category)
                                             <tr>
-                                                <td>{{ $loop->index+1 }}</td>
+                                                <td>{{ $loop->index+$categories->firstItem() }}</td>
                                                 <td>{{ $category->name }}</td>
                                                 <td>{{ $category->main_category }}</td>
-                                                <td><span class="badge badge-success">Approved</span></td>
+                                                <td><span class="badge badge-{{ $category->status=='active'?'success':'danger' }}">{{ ucfirst($category->status) }}</span></td>
                                                 <td>
-                                                <a href=""><i class="fas fa-edit text-warning" aria-hidden="true"></i></a>
+                                                    <a href="{{ route('admin.editcategory', ['id'=>$category->id]) }}">
+                                                        <i class="fas fa-edit text-warning" aria-hidden="true"></i>
+                                                    </a>
                                                     <i class="fas fa-trash text-danger ml-2" aria-hidden="true"></i>
                                                 </td>
                                             </tr>
