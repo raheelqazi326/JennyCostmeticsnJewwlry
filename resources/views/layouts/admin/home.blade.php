@@ -22,6 +22,8 @@
     <!-- Google Font: Source Sans Pro -->
     @livewireStyles
     @livewireScripts
+    <script src="{{ asset('vendor/js/turbolinks.js') }}"></script>
+    <script src="{{ asset('vendor/js/alpine.js') }}"></script>
     <style>
         label.enteries {
             font-weight: normal;
@@ -186,8 +188,6 @@
     <script src="{{ asset('admin_assets/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('admin_assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('vendor/js/turbolinks.js') }}"></script>
-    <script src="{{ asset('vendor/js/alpine.js') }}"></script>
     <!-- overlayScrollbars -->
     <script src="{{ asset('admin_assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
@@ -206,7 +206,7 @@
     {{-- <script src="{{ asset('admin_assets/plugins/chart.js/Chart.min.js') }}"></script> --}}
 
     <!-- PAGE SCRIPTS -->
-    {{-- <script src="{{ asset('admin_assets/dist/js/pages/dashboard2.js') }}"></script> --}}
+    <script src="{{ asset('admin_assets/dist/js/pages/dashboard2.js') }}"></script>
 </body>
 
 </html>

@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @livewireStyles
     @livewireScripts
+    <script src="{{ asset('vendor/js/turbolinks.js') }}"></script>
+    <script src="{{ asset('vendor/js/alpine.js') }}"></script>
 </head>
 
 <body class="hold-transition login-page">
@@ -38,8 +40,6 @@
     <script src="{{ asset('admin_assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin_assets/dist/js/adminlte.min.js') }}"></script>
-    <script src="{{ asset('vendor/js/turbolinks.js') }}"></script>
-    <script src="{{ asset('vendor/js/alpine.js') }}"></script>
 </body>
 
 </html>
