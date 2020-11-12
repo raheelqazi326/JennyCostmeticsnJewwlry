@@ -23,6 +23,14 @@ class Category extends Component
     public function updatedSearch(){
       $this->resetPage();
     }
+
+    public function delete($id){
+        $category = CategoryModel::find($id);
+        if(!empty($category)){
+            $category->delete();
+        }
+    }
+
     public function render()
     {
         $categories = CategoryModel::search($this->search)->paginate($this->perPage);

@@ -22,7 +22,7 @@
     <!-- Google Font: Source Sans Pro -->
     @livewireStyles
     @livewireScripts
-    <script src="{{ asset('vendor/js/turbolinks.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/js/turbolinks.js') }}"></script> --}}
     <script src="{{ asset('vendor/js/alpine.js') }}"></script>
     <style>
         label.enteries {
@@ -62,7 +62,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
                         <span class="badge badge-warning navbar-badge">15</span>
@@ -87,7 +87,7 @@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
-                </li>
+                </li> --}}
                 <!-- user dropdown -->
                 
                 <li class="nav-item dropdown">
@@ -155,6 +155,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/admin/product" class="nav-link">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>
+                                    Product
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -185,15 +193,16 @@
 
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    <script src="{{ asset('admin_assets/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/jquery/jquery.min.js') }}" data-turbolinks-eval="false"></script>
     <!-- Bootstrap 4 -->
-    <script src="{{ asset('admin_assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}" data-turbolinks-eval="false"></script>
     <!-- overlayScrollbars -->
-    <script src="{{ asset('admin_assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}" data-turbolinks-eval="false"></script>
     <!-- AdminLTE App -->
-    <script src="{{asset('admin_assets/dist/js/adminlte.js')}}"></script>
+    <script src="{{asset('admin_assets/dist/js/adminlte.js')}}" data-turbolinks-eval="false"></script>
 
     <!-- OPTIONAL SCRIPTS -->
+    @stack('script')
     {{-- <script src="{{ asset('admin_assets/dist/js/demo.js') }}"></script> --}}
 
     <!-- PAGE PLUGINS -->
@@ -206,7 +215,7 @@
     {{-- <script src="{{ asset('admin_assets/plugins/chart.js/Chart.min.js') }}"></script> --}}
 
     <!-- PAGE SCRIPTS -->
-    <script src="{{ asset('admin_assets/dist/js/pages/dashboard2.js') }}"></script>
+    <script src="{{ asset('admin_assets/dist/js/pages/dashboard2.js') }}" data-turbolinks-eval="false"></script>
 </body>
 
 </html>

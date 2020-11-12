@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @livewireStyles
     @livewireScripts
-    <script src="{{ asset('vendor/js/turbolinks.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/js/turbolinks.js') }}"></script> --}}
     <script src="{{ asset('vendor/js/alpine.js') }}"></script>
 </head>
 

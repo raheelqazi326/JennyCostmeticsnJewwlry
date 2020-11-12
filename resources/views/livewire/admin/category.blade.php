@@ -94,7 +94,9 @@
                                                     <a href="{{ route('admin.editcategory', ['id'=>$category->id]) }}">
                                                         <i class="fas fa-edit text-warning" aria-hidden="true"></i>
                                                     </a>
-                                                    <i class="fas fa-trash text-danger ml-2" aria-hidden="true"></i>
+                                                    <a href="javascript:void(0)" wire:click="delete({{$category->id}})">
+                                                        <i class="fas fa-trash text-danger ml-2" aria-hidden="true"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach    
@@ -115,9 +117,8 @@
                                             to 
                                             <b>{{$categories->lastItem()}}</b>
                                             out of 
-                                        <b>{{$categories->total()}}</b>
+                                            <b>{{$categories->total()}}</b>
                                         </p>
-
                                     </div>
                                     <div class="col-6 ">
                                         <div class="float-right">

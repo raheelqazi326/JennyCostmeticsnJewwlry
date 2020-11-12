@@ -36,9 +36,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     });
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/', 'Home')->name('admin.home');
+        // Category
         Route::get('category', 'Category')->name('admin.category');
         Route::get('/category/add', 'AddCategory')->name('admin.addcategory');
         Route::get('/category/{id}', 'EditCategory')->name('admin.editcategory');
+        // Product
+        Route::get('product', 'product\Show')->name('admin.product');
+        Route::get('/product/add', 'product\Add')->name('admin.addproduct');
+        Route::get('/product/{id}', 'product\Edit')->name('admin.editproduct');
+        
         Route::get('logout', function(){
             auth('admin')->logout();
             return redirect()->route('admin.login');
