@@ -9,21 +9,36 @@ class Add extends Component
 {
     public $tab = "information";
     public $tabs = ["information","association","images"];
+    public $sku = '';
     public $name;
+    public $price;
+    public $um;
+    public $description;
+    public $stock;
     public $main_category;
+    public $category;
+    public $manufacturer;
+    public $size = [];
     public $main_categories = [
         "cosmetics",
         "jewelry"
     ];
 
+    public function addSize(){
+        $this->size[] = "";
+    }
+
+    public function removeSize($i){
+        unset($this->size[$i]);
+    }
+
     protected $rules = [
-        "name" => "required|unique:categories",
+        "name" => "required",
         "main_category" => "required|in:cosmetics,jewelry"
     ];
 
     protected $messages = [
-        "name.required" => "Category Name is required",
-        "name.unique" => "Category Name already exists",
+        "name.required" => "Product Name is required",
         "main_category" => "Main Category should be Cosmetics or jewelry"
     ];
 
@@ -52,7 +67,7 @@ class Add extends Component
     }
 
     public function mount(){
-
+        $this->size[] = "";
     }
 
     public function render()

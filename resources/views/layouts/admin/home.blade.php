@@ -24,11 +24,16 @@
     @livewireScripts
     {{-- <script src="{{ asset('vendor/js/turbolinks.js') }}"></script> --}}
     <script src="{{ asset('vendor/js/alpine.js') }}"></script>
+    <!-- jQuery -->
+    <script src="{{ asset('admin_assets/plugins/jquery/jquery.min.js') }}" data-turbolinks-eval="false"></script>
     <style>
         label.enteries {
             font-weight: normal;
             text-align: left;
             white-space: nowrap !important;
+        }
+        body{           
+            user-select: none;
         }
     </style>
 </head>
@@ -192,8 +197,6 @@
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
-    <!-- jQuery -->
-    <script src="{{ asset('admin_assets/plugins/jquery/jquery.min.js') }}" data-turbolinks-eval="false"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('admin_assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}" data-turbolinks-eval="false"></script>
     <!-- overlayScrollbars -->

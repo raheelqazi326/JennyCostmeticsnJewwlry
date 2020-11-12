@@ -27,35 +27,35 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <div class="card-body mb-3">
+                        <div class="card-body mb-3" x-data="{ tab: 'images' }">
                             {{-- <div class="card text-center"> --}}
                               <div class="card-header mb-4">
                                 <ul class="nav nav-tabs card-header-tabs">
                                   <li class="nav-item">
-                                    <a class="nav-link {{ $tab == 'information'?'active':'' }}" wire:click.prevent="changeTab('information')" href="#">Information</a>
+                                    <a class="nav-link" :class="{ 'active': tab === 'information' }" x-on:click="tab = 'information'" href="#">Information</a>
                                   </li>
                                   <li class="nav-item">
-                                    <a class="nav-link {{ $tab == 'association'?'active':'' }}" wire:click.prevent="changeTab('association')" href="#">Association</a>
+                                    <a class="nav-link" :class="{ 'active': tab === 'association' }" x-on:click="tab = 'association'" href="#">Association</a>
                                   </li>
                                   <li class="nav-item">
-                                    <a class="nav-link {{ $tab == 'images'?'active':'' }}" wire:click.prevent="changeTab('images')" href="#">Images</a>
+                                    <a class="nav-link" :class="{ 'active': tab === 'images' }" x-on:click="tab = 'images'" href="#">Images</a>
                                   </li>
                                 </ul>
                               </div>
                             {{-- </div> --}}
                             <form wire:submit.prevent="save">
-                                @if ($tab == 'information')
-                                    {{-- <div class="form-group">
-                                        <label>Tabs</label>
-                                        <div x-data="{ open: false }">
-                                            <input type="text" @keyup="open = true">
-                                            <ul x-show="open" @click.away="open = false">
-                                                @foreach ($tabs as $singleTab)
-                                                    <li>{{ $singleTab }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div> --}}
+                                {{-- <div class="form-group">
+                                    <label>Tabs</label>
+                                    <div x-data="{ open: false }">
+                                        <input type="text" @keyup="open = true">
+                                        <ul x-show="open" @click.away="open = false">
+                                            @foreach ($tabs as $singleTab)
+                                                <li>{{ $singleTab }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div> --}}
+                                <div x-show="tab === 'information'">
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input type="text" class="form-control" placeholder="Enter name of product" wire:model="name">
@@ -107,7 +107,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" wire:ignore>
                                         <label>Description</label>
                                         <textarea type="text" class="form-control textarea" wire:model="description" placeholder="Description"></textarea>
                                         @error('description')
@@ -116,10 +116,11 @@
                                     </div>
                                     <div class="col-2 offset-10" wire:loading.remove>
                                         <div class="col">
-                                            <button type="button" wire:click="changeTab('association')" class="btn btn-primary btn-block">Next</button>
+                                            <button type="button" x-on:click="tab = 'association'" class="btn btn-primary btn-block">Next</button>
                                         </div>
                                     </div>
-                                @elseif ($tab == 'association')
+                                </div>
+                                <div x-show="tab === 'association'">
                                     <div class="form-group">
                                         <label>Main Category</label>
                                         <select class="form-control" wire:model="main_category">
@@ -141,26 +142,30 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Manufactures</label>
-                                        <input type="text" class="form-control" wire:model="manufactures">
-                                        @error('manufactures')
+                                        <input type="text" class="form-control" wire:model="manufacturer">
+                                        @error('manufacturer')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <div class="col pl-0">
                                         <label>Size</label>
-                                            <div class="row">
-                                                <div class="col-10">
-                                                    <input type="text" class="form-control" wire:model="manufactures">
-                                                    @error('size')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
+                                            @foreach ($size as $i => $item)
+                                                <div class="row mb-2">
+                                                    <div class="col">
+                                                        <input type="text" class="form-control" wire:model="size.{{ $i }}">
+                                                        @error('size')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <button type="button" class="btn btn-danger btn-block" wire:click="removeSize({{ $i }})"><i class="fa fa-trash"></i></button>
+                                                    </div>
                                                 </div>
-                                                <div class="col">
-                                                    <button type="button" class="btn btn-danger btn-block"><i class="fa fa-trash"></i></button>
-                                                </div>
-                                                <div class="col">
-                                                    <button type="button" class="btn btn-success btn-block"><b>+</b></button>
+                                            @endforeach
+                                            <div class="row mt-2">
+                                                <div class="col-2">
+                                                    <button type="button" class="btn btn-success btn-block" wire:click="addSize()">ADD <i class="fa fa-plus" aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,25 +173,30 @@
                                     <div class="col-4 offset-8" wire:loading.remove>
                                         <div class="row">
                                             <div class="col">
-                                                <button type="button" wire:click="changeTab('information')" class="btn btn-primary btn-block">Previous</button>
+                                                <button type="button" x-on:click="tab = 'information'" class="btn btn-primary btn-block">Previous</button>
                                             </div>
                                             <div class="col">
-                                                <button type="button" wire:click="changeTab('images')" class="btn btn-primary btn-block">Next</button>
+                                                <button type="button" x-on:click="tab = 'images'" class="btn btn-primary btn-block">Next</button>
                                             </div>
                                         </div>
                                     </div>
-                                @elseif ($tab == 'images')
+                                </div>
+                                <div x-show="tab === 'images'">
                                     <div class="col-4 offset-8" wire:loading.remove>
                                         <div class="row">
                                             <div class="col">
-                                                <button type="button" wire:click="changeTab('association')" class="btn btn-primary btn-block">Previous</button>
+                                                <button type="button" x-on:click="tab = 'association'" class="btn btn-primary btn-block">Previous</button>
                                             </div>
                                             <div class="col">
                                                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                             </div>
                                         </div>
                                     </div>
-                                @endif
+                                </div>
+                                {{-- @if ($tab == 'information')
+                                @elseif ($tab == 'association')
+                                @elseif ($tab == 'images')
+                                @endif --}}
                                 <div class="col-2 offset-10" wire:loading>
                                     <div class="row">
                                         <button type="button" disabled class="btn btn-primary btn-block">Loading ..</button>
@@ -201,13 +211,11 @@
         </div>
     </section>
 </div>
-@push('script')
-    <link rel="stylesheet" href="{{ asset('admin_assets/plugins/summernote/summernote-bs4.css') }}">
-    <script src="{{ asset('admin_assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <script>
-        $(function() {
-            // Summernote
-            $('.textarea').summernote()
-        })
-    </script>
-@endpush
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/summernote/summernote-bs4.css') }}">
+<script src="{{ asset('admin_assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script>
+    document.addEventListener('livewire:load', function () {
+        // Summernote
+        $('.textarea').summernote()
+    });
+</script>
