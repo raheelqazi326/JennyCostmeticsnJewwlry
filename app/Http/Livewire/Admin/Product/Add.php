@@ -3,26 +3,23 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use App\models\Category;
 
 class Add extends Component
 {
-    public $tab = "information";
+    use WithFileUploads;
+    public $tab;
     public $tabs = ["information","association","images"];
     public $sku = '';
-    public $name;
-    public $price;
-    public $um;
-    public $description;
-    public $stock;
-    public $main_category;
-    public $category;
-    public $manufacturer;
     public $size = [];
+    public $images = [];
     public $main_categories = [
         "cosmetics",
         "jewelry"
     ];
+    
+    public $name, $price, $um, $description, $stock, $main_category, $category, $manufacturer;
 
     public function addSize(){
         $this->size[] = "";
@@ -34,12 +31,15 @@ class Add extends Component
 
     protected $rules = [
         "name" => "required",
-        "main_category" => "required|in:cosmetics,jewelry"
+        "main_category" => "required|in:cosmetics,jewelry",
+        "images.*" => 'image|max:1024'
     ];
 
     protected $messages = [
         "name.required" => "Product Name is required",
-        "main_category" => "Main Category should be Cosmetics or jewelry"
+        "main_category" => "Main Category should be Cosmetics or jewelry",
+        'images.*.image' => 'image should be image',
+        'images.*.max' => 'image size should be 1MB or less',
     ];
 
     public function updated($field){
@@ -68,6 +68,7 @@ class Add extends Component
 
     public function mount(){
         $this->size[] = "";
+        $this->tab = "";
     }
 
     public function render()

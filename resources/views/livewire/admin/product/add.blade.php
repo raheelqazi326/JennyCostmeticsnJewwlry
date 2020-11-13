@@ -182,6 +182,27 @@
                                     </div>
                                 </div>
                                 <div x-show="tab === 'images'">
+                                    <div class="form-group">
+                                        <input type="file" name="images" id="images" style="display:none" wire:model="images" multiple>
+                                        <label for="images" class="btn btn-primary">
+                                            Upload <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </label>
+                                        @error('images.*')
+                                            <span class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            @if (!empty($images))
+                                                Photo Preview:
+                                                @foreach ($images as $image)
+                                                    <div class="col-4">
+                                                        <img src="{{ $image->temporaryUrl() }}">
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="col-4 offset-8" wire:loading.remove>
                                         <div class="row">
                                             <div class="col">
@@ -193,10 +214,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- @if ($tab == 'information')
-                                @elseif ($tab == 'association')
-                                @elseif ($tab == 'images')
-                                @endif --}}
                                 <div class="col-2 offset-10" wire:loading>
                                     <div class="row">
                                         <button type="button" disabled class="btn btn-primary btn-block">Loading ..</button>
