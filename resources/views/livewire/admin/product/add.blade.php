@@ -194,10 +194,37 @@
                                     <div class="form-group">
                                         <div class="row">
                                             @if (!empty($images))
-                                                Photo Preview:
+                                                <table class="table table-striped table-inverse">
+                                                    <div class="table-caption">
+                                                        <h2>
+                                                            Images
+                                                        </h2>
+                                                    </div>
+                                                    <thead class="thead-inverse">
+                                                        <tr>
+                                                            <th>Preview</th>
+                                                            <th>Cover Image</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($images as $image)
+                                                            <tr>
+                                                                <td scope="row">
+                                                                    <img src="{{ $image->temporaryUrl() }}" width=100 height=100>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="radio" name="cover-image[]" value="{{$loop->index}}" {{ $loop->index==0?"checked":"" }}>
+                                                                </td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-danger" wire:click="removeImage({{$loop->index}})"> <i class="fa fa-trash" aria-hidden="true"></i> Remove Image</button>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                                 @foreach ($images as $image)
-                                                    <div class="col-4">
-                                                        <img src="{{ $image->temporaryUrl() }}">
+                                                    <div class="col-3">
                                                     </div>
                                                 @endforeach
                                             @endif

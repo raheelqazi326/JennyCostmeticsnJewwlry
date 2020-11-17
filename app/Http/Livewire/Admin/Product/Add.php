@@ -14,6 +14,7 @@ class Add extends Component
     public $sku = '';
     public $size = [];
     public $images = [];
+    public $tmp_images = [];
     public $main_categories = [
         "cosmetics",
         "jewelry"
@@ -41,6 +42,18 @@ class Add extends Component
         'images.*.image' => 'image should be image',
         'images.*.max' => 'image size should be 1MB or less',
     ];
+
+    public function updatingImages($images){
+        $this->tmp_images = $this->images;
+    }
+
+    public function updatedImages($images){
+        $this->images = array_merge($this->tmp_images,$this->images);
+    }
+
+    public function removeImage($index){
+        unset($this->images[$index]);
+    }
 
     public function updated($field){
         // dd($field);
