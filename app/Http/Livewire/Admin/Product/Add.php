@@ -16,12 +16,12 @@ class Add extends Component
     public $size = [];
     public $images = [];
     public $tmp_images = [];
-    public $tmp_images_old = [];
     public $main_categories = [
         "cosmetics",
         "jewelry"
     ];
     
+    public $image_message;
     public $name, $price, $um, $description, $stock, $main_category, $category, $manufacturer;
 
     public function addSize(){
@@ -46,18 +46,20 @@ class Add extends Component
     ];
 
     public function updatingImages($images){
-        $this->tmp_images_old = $this->tmp_images;
         $this->tmp_images = $this->images;
     }
-
+    
     public function updatedImages(){
         // dd([$this->images, $images]);
-        $validator = Validator::make($this->images, [
+        $validator = Validator::make(['images' => $this->images], [
             'images.*' => 'mimes:jpg,jpeg,png|max:1000' // 1MB
         ]);
         if($validator->fails()){
-            $this->images = $this->tmp_images_old;
-            session()->flash('errors', $validator->errors());
+            // dd($this->tmp_images);
+            $this->images = $this->tmp_images;
+            $this->image_message = "Image not uploaded. Please choose a different file";
+            // session()->flash('errors', $validator->errors());
+            // return;
         }
         else{
             $this->images = array_merge($this->tmp_images,$this->images);

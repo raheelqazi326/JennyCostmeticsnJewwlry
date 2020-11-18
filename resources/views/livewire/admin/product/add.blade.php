@@ -225,7 +225,7 @@
                                                         @foreach ($images as $image)
                                                             <tr>
                                                                 <td scope="row">
-                                                                    <img src="{{ $image->temporaryUrl() }}" width=100 height=100>
+                                                                    <img src="{{ $image->temporaryUrl() }}" width="100" height="100">
                                                                 </td>
                                                                 <td>
                                                                     <input type="radio" name="cover-image[]" value="{{$loop->index}}" {{ $loop->index==0?"checked":"" }}>
