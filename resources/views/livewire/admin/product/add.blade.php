@@ -182,14 +182,28 @@
                                     </div>
                                 </div>
                                 <div x-show="tab === 'images'">
-                                    <div class="form-group">
-                                        <input type="file" name="images" id="images" style="display:none" wire:model="images" multiple>
-                                        <label for="images" class="btn btn-primary">
-                                            Upload <i class="fa fa-plus" aria-hidden="true"></i>
-                                        </label>
-                                        @error('images.*')
-                                            <span class="error">{{ $message }}</span>
-                                        @enderror
+                                    <div
+                                        x-data="{ isUploading: false, progress: 0 }"
+                                        x-on:livewire-upload-start="isUploading = true"
+                                        x-on:livewire-upload-finish="isUploading = false"
+                                        x-on:livewire-upload-error="isUploading = false"
+                                        x-on:livewire-upload-progress="progress = $event.detail.progress"
+                                    >
+                                        <!-- File Input -->
+                                        <div class="form-group">
+                                            <input type="file" name="images" id="images" style="display:none" wire:model="images" multiple>
+                                            <label for="images" class="btn btn-primary">
+                                                Upload <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </label>
+                                            @error('images.*')
+                                                <span class="error">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Progress Bar -->
+                                        <div x-show="isUploading">
+                                            <progress max="100" x-bind:value="progress"></progress>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Product;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\models\Category;
+use Validator;
 
 class Add extends Component
 {
@@ -15,6 +16,7 @@ class Add extends Component
     public $size = [];
     public $images = [];
     public $tmp_images = [];
+    public $tmp_images_old = [];
     public $main_categories = [
         "cosmetics",
         "jewelry"
@@ -33,22 +35,33 @@ class Add extends Component
     protected $rules = [
         "name" => "required",
         "main_category" => "required|in:cosmetics,jewelry",
-        "images.*" => 'image|max:1024'
+        'images.*' => 'image|max:1024'
     ];
 
     protected $messages = [
         "name.required" => "Product Name is required",
         "main_category" => "Main Category should be Cosmetics or jewelry",
-        'images.*.image' => 'image should be image',
-        'images.*.max' => 'image size should be 1MB or less',
+        // 'images.*.image' => 'image should be image',
+        // 'images.*.max' => 'image size should be 1MB or less',
     ];
 
     public function updatingImages($images){
+        $this->tmp_images_old = $this->tmp_images;
         $this->tmp_images = $this->images;
     }
 
-    public function updatedImages($images){
-        $this->images = array_merge($this->tmp_images,$this->images);
+    public function updatedImages(){
+        // dd([$this->images, $images]);
+        $validator = Validator::make($this->images, [
+            'images.*' => 'mimes:jpg,jpeg,png|max:1000' // 1MB
+        ]);
+        if($validator->fails()){
+            $this->images = $this->tmp_images_old;
+            session()->flash('errors', $validator->errors());
+        }
+        else{
+            $this->images = array_merge($this->tmp_images,$this->images);
+        }
     }
 
     public function removeImage($index){
