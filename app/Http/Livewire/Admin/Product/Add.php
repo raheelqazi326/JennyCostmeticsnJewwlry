@@ -32,17 +32,22 @@ class Add extends Component
         unset($this->size[$i]);
     }
 
+    protected $image_rules = [
+        'images.*' => 'mimes:jpg,jpeg,png|max:1000'
+    ];
+
     protected $rules = [
         "name" => "required",
-        "main_category" => "required|in:cosmetics,jewelry",
-        'images.*' => 'image|max:1024'
+        "main_category" => "required|in:cosmetics,jewelry"
     ];
 
     protected $messages = [
         "name.required" => "Product Name is required",
         "main_category" => "Main Category should be Cosmetics or jewelry",
-        // 'images.*.image' => 'image should be image',
-        // 'images.*.max' => 'image size should be 1MB or less',
+        'images.*' => [
+            'mime' => 'image should be in JPG, JPEG or PNG Format',
+            'max' => 'image size should be 1MB or less'
+        ]
     ];
 
     public function updatingImages($images){
@@ -51,14 +56,21 @@ class Add extends Component
     
     public function updatedImages(){
         // dd([$this->images, $images]);
-        $validator = Validator::make(['images' => $this->images], [
-            'images.*' => 'mimes:jpg,jpeg,png|max:1000' // 1MB
+        $validator = Validator::make(['images' => $this->images], $this->image_rules, [
+            'images.*' => [
+                'mime' => 'image should be in JPG, JPEG or PNG Format',
+                'max' => 'image size should be 1MB or less'
+            ]
         ]);
         if($validator->fails()){
             // dd($this->tmp_images);
             $this->images = $this->tmp_images;
-            $this->image_message = "Image not uploaded. Please choose a different file";
-            // session()->flash('errors', $validator->errors());
+            // This will give you full access to the error bag.
+            $errors = $this->getErrorBag();
+            // With this error bag instance, you can do things like this:
+            foreach($validator->errors()->get('images.*') as $err){
+                $errors->add('images.*', $err[0]);
+            }
             // return;
         }
         else{
