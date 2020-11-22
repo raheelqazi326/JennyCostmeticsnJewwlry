@@ -37,12 +37,11 @@
                                             <option value="25">25</option>
                                             <option value="50">50</option>
                                             <option value="100">100</option>
-                                            @if (!empty($categories))
-                                            <option value="{{$categories->total()}}">All</option>
+                                            @if (!empty($products))
+                                            <option value="{{$products->total()}}">All</option>
                                             @endif
                                         </select>
-                                        entries
-                                    </label>
+                                        entriesf
                                 </div>
                                 <div class="col-2">
                                     <a class="btn btn-primary btn-block" href="/admin/product/add" role="button">
@@ -77,24 +76,32 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Descripiton</th>
+                                        <th>Stock</th>
+                                        <th>Price</th>
                                         <th>Category</th>
+                                        <th>Main Category</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (!empty($categories))
-                                        @foreach ($categories as $category)
+                                    @if (!empty($products))
+                                        @foreach ($products as $product)
                                             <tr>
-                                                <td>{{ $loop->index+$categories->firstItem() }}</td>
-                                                <td>{{ $category->name }}</td>
-                                                <td>{{ $category->main_category }}</td>
-                                                <td><span class="badge badge-{{ $category->status=='active'?'success':'danger' }}">{{ ucfirst($category->status) }}</span></td>
+                                                <td>{{ $loop->index+$products->firstItem() }}</td>
+                                                <td>{{ $product->name }}</td>
+                                                <td>{{ $product->description }}</td>
+                                                <td>{{ $product->stock }}</td>
+                                                <td>{{ $product->price }}</td>
+                                                <td>{{ $product->category->name }}</td>
+                                                <td>{{ $product->category->main_category }}</td>
+                                                <td><span class="badge badge-{{ $product->status=='active'?'success':'danger' }}">{{ ucfirst($product->status) }}</span></td>
                                                 <td>
-                                                    <a href="{{ route('admin.editcategory', ['id'=>$category->id]) }}">
+                                                    <a href="{{ route('admin.editproduct', ['id'=>$product->id]) }}">
                                                         <i class="fas fa-edit text-warning" aria-hidden="true"></i>
                                                     </a>
-                                                    <a href="javascript:void(0)" wire:click="delete({{$category->id}})">
+                                                    <a href="javascript:void(0)" wire:click="delete({{$product->id}})">
                                                         <i class="fas fa-trash text-danger ml-2" aria-hidden="true"></i>
                                                     </a>
                                                 </td>
@@ -108,21 +115,21 @@
                         <!-- card-body -->
                         <!-- card-footer -->
                         <div class="card-footer">
-                            @if (!empty($categories))
+                            @if (!empty($products))
                                 <div class="card-tools row">
                                     <div class="col-6">
                                         <p>
                                             Showing 
-                                            <b>{{$categories->firstItem()}}</b>
+                                            <b>{{$products->firstItem()}}</b>
                                             to 
-                                            <b>{{$categories->lastItem()}}</b>
+                                            <b>{{$products->lastItem()}}</b>
                                             out of 
-                                            <b>{{$categories->total()}}</b>
+                                            <b>{{$products->total()}}</b>
                                         </p>
                                     </div>
                                     <div class="col-6 ">
                                         <div class="float-right">
-                                        {{$categories->links()}}
+                                        {{$products->links()}}
                                         </div>
                                     </div>
                                 </div>

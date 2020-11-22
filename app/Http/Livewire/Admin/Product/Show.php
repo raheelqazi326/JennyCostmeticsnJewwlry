@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Product;
 
 use Livewire\Component;
 use App\Models\Category as CategoryModel;
+use App\Models\Product;
 use Livewire\WithPagination;
 
 class Show extends Component
@@ -25,16 +26,16 @@ class Show extends Component
     }
 
     public function delete($id){
-        $category = CategoryModel::find($id);
-        if(!empty($category)){
-            $category->delete();
-        }
+        // $category = CategoryModel::find($id);
+        // if(!empty($category)){
+        //     $category->delete();
+        // }
     }
 
     public function render()
     {
-        $categories = CategoryModel::search($this->search)->paginate($this->perPage);
-        return view('livewire.admin.product.show')->layout('layouts.admin.home')->with('categories',$categories);
+        $products = Product::search($this->search)->paginate($this->perPage);
+        return view('livewire.admin.product.show')->layout('layouts.admin.home')->with('products',$products);
     }
 
     public function updatedPerPage(){
