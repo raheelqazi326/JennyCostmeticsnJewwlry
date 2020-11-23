@@ -14,8 +14,6 @@ use Str;
 class Add extends Component
 {
     use WithFileUploads;
-    public $tab;
-    public $tabs = ["information","association","images"];
     public $size = [];
     public $images = [];
     public $tmp_images = [];
@@ -27,7 +25,7 @@ class Add extends Component
     public $categories = [];
     
     public $image_message;
-    public $name, $price, $description, $coverimage, $stock, $main_category, $category, $manufacturer;
+    public $name, $price, $description, $stock, $main_category, $category, $manufacturer;
 
     public function addSize(){
         $this->size[] = "";
@@ -167,12 +165,12 @@ class Add extends Component
                     $product_attribute->save();
                 }
                 foreach($this->images as $key => $image){
-                    $filename = 'IMG-'.time();
+                    $filename = 'IMG-'.time()."-".rand();
                     $image->storeAs('public', $filename);
                     $product_image = new ProductImage;
                     $product_image->product_id = $product->id;
                     $product_image->image = $filename;
-                    if($this->coverimage == $key){
+                    if($loop->first){
                         $product_image->is_cover = 1;
                     }
                     $product_image->save();
@@ -185,7 +183,6 @@ class Add extends Component
 
     public function mount(){
         $this->size[] = "";
-        $this->tab = "";
         $this->categories = Category::where('status', 'active')->get();
         $this->main_category = "cosmetics";
         $this->stock = 100;

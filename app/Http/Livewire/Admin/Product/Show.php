@@ -26,10 +26,10 @@ class Show extends Component
     }
 
     public function delete($id){
-        // $category = CategoryModel::find($id);
-        // if(!empty($category)){
-        //     $category->delete();
-        // }
+        $product = Product::find($id);
+        if(!empty($product)){
+            $product->delete();
+        }
     }
 
     public function render()

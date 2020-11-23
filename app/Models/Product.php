@@ -32,7 +32,7 @@ class Product extends Model
     }
 
     public function sizes(){
-        return $this->hasMany(ProductAttribute::class, 'product_id', 'id');
+        return $this->hasMany(ProductAttribute::class, 'product_id', 'id')->where('key', 'size');
     }
 
     public function images(){

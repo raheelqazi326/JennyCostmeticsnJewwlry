@@ -153,9 +153,6 @@
                                                                 <img src="{{ $image->temporaryUrl() }}" width="100" height="100">
                                                             </td>
                                                             <td>
-                                                                <input type="radio" wire:model.lazy="coverimage" name="coverimage" value="{{$key}}" {{ $loop->first?"checked":"" }}>
-                                                            </td>
-                                                            <td>
                                                                 <button type="button" class="btn btn-danger" wire:click="removeImage({{$key}})"> <i class="fa fa-trash" aria-hidden="true"></i> Remove Image</button>
                                                             </td>
                                                         </tr>
