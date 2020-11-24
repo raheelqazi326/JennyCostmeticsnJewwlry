@@ -142,7 +142,7 @@
                                                 <thead class="thead-inverse">
                                                     <tr>
                                                         <th>Preview</th>
-                                                        <th>Cover Image</th>
+                                                        {{-- <th>Cover Image</th> --}}
                                                         <th></th>
                                                     </tr>
                                                 </thead>

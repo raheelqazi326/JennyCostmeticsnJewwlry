@@ -3,13 +3,18 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use Livewire\Component;
-use App\models\Category;
 use Livewire\WithFileUploads;
+use App\models\Category;
 use App\Models\Product;
+use App\models\ProductAttribute;
+use App\models\ProductImage;
+use Validator;
+use Str;
 
 class Edit extends Component
 {
     use WithFileUploads;
+    public $product_id;
     public $size = [];
     public $images = [];
     public $old_images = [];
@@ -23,7 +28,7 @@ class Edit extends Component
     
     public $image_message;
     public $name, $price, $description, $stock, $category, $manufacturer;
-
+    
     public function addSize(){
         $this->size[] = "";
     }
@@ -137,12 +142,13 @@ class Edit extends Component
                 $errors->add($key, $err[0]);
             }
         }
-        else if(count($this->images) < 1){
+        else if(count($this->images) < 1 && count($this->old_images) < 1){
             $errors = $this->getErrorBag();
             $errors->add('images.*', "Upload atleast 1 image");
         }
         else{
-            $product = new Product;
+            // dd($this->product_id);
+            $product = Product::find($this->product_id);
             $product->category_id = $this->category;
             $product->stock = $this->stock;
             $product->price = $this->price;
@@ -150,6 +156,14 @@ class Edit extends Component
             $product->name = $this->name;
             $product->description = $this->description;
             if($product->save()){
+                $sizes = ProductAttribute::where('product_id', $product->id)->get();
+                foreach($sizes as $size){
+                    $size->delete();
+                }
+                $images = ProductImage::where('product_id', $product->id)->get();
+                foreach($images as $image){
+                    $image->delete();
+                }
                 foreach($this->size as $size){
                     $product_attribute = new ProductAttribute;
                     $product_attribute->product_id = $product->id;
@@ -163,18 +177,23 @@ class Edit extends Component
                     $product_image = new ProductImage;
                     $product_image->product_id = $product->id;
                     $product_image->image = $filename;
-                    if($loop->first){
-                        $product_image->is_cover = 1;
-                    }
                     $product_image->save();
                 }
-                session()->flash('message', 'Product has been added successfully');
+                foreach($this->old_images as $key => $image){
+                    $product_image = new ProductImage;
+                    $product_image->product_id = $product->id;
+                    $product_image->image = $image->image;
+                    $product_image->save();
+                }
+                session()->flash('message', 'Product has been updated successfully');
             }
             return redirect()->route('admin.product');
         }
     }
 
     public function mount($id){
+        $this->product_id = $id;
+        // dd($this->product_id);
         $product = Product::find($id);
         if(empty($product)){
             return redirect()->route('admin.product')->with('errors', 'product not found');
