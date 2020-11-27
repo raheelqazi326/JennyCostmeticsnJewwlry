@@ -9,7 +9,7 @@
                     <li>
                         <div class="ct-addressReference"><i class="fa fa-location-arrow"></i> Mailing Address:</div>
                         <div class="ct-addressDataReference">
-                            <span>Diana Jewelry LLC.</span><br>
+                            <span>Jenny Jewelry & Cosmetics</span><br>
                             <span>P.O. Box 1234</span><br>
                             <span>Chesterfield, NY 23456</span>
                         </div>
@@ -23,7 +23,7 @@
                     <li>
                         <div class="ct-addressReference"><i class="fa fa-envelope"></i> Email Address:</div>
                         <div class="ct-addressDataReference">
-                            <a href="#"><span>info@dianajewelry.com</span></a>
+                            <a href="#"><span>info@jeenyshop.com</span></a>
                         </div>
                     </li>
                 </ul>
@@ -53,7 +53,7 @@
                         Ups! An error occured. Please try again later.
                     </div>
 
-                    <form class="form-horizontal contactForm validateIt" method="post" action="http://diana.html.themeplayers.net/assets/form/send.php" role="form" data-email-subject="Contact Form" data-show-errors="true">
+                    <form class="form-horizontal contactForm validateIt" method="post" action="" role="form" data-email-subject="Contact Form" data-show-errors="true">
                         <div class="form-group">
                             <label for="fullname" class="col-sm-2 control-label">Full Name*: </label>
                             <div class="col-sm-10">

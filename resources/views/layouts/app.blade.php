@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
-        <title>Diana - Creative Shop Template</title>
+        <title>Jenny - jewelry & Cosmetics</title>
         {{-- <script src="cdn-cgi/apps/head/sxN6HgCn8v7CG45Nsym8imDXilk.js"></script> --}}
         <link rel="stylesheet" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.css')}}">
@@ -87,7 +87,7 @@
                     <li><a href="create-account.html"><i class="fa fa-pencil fa-fw"></i> Create an account</a></li>
                     <li><a href="my-account.html"><i class="fa fa-cog fa-fw"></i> My Account</a></li>
                     <li><a href="wishlist.html"><i class="fa fa-edit fa-fw"></i> Wishlist</a></li>
-                    <li><a href="checkout.html"><i class="fa fa-archive fa-fw"></i> Checkout</a></li>
+                    {{-- <li><a href="checkout.html"><i class="fa fa-archive fa-fw"></i> Checkout</a></li> --}}
                 </ul>
             </nav>
             <div class="ct-shopMenuMobile-basket">
@@ -132,7 +132,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="assets/images/demo-content/logo.png" alt="Diana Logo"> </a>
+                <a class="navbar-brand" href="/"><img src="assets/images/demo-content/logo.png" alt="JennyShop Logo"> </a>
                 <button type="button" class="navbarShop-toggle">
                     <i class="fa fa-fw fa-user"></i>
                 </button>
@@ -191,7 +191,7 @@
                                     <a class="btn btn-default pull-right ct-u-width-49pc" href="{{ url('/checkout') }}" role="button">Checkout <i class="fa fa-angle-double-right fa-fw"></i></a>
                                 </div>
                             </div>
-                            <div class="btn-group">
+                            {{-- <div class="btn-group">
                                 <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     EN <span class="caret"></span>
                                 </button>
@@ -210,7 +210,7 @@
                                     <li><a href="#">EUR €</a></li>
                                     <li><a href="#">GBP £</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -223,12 +223,12 @@
                             <ul class="list-unstyled list-inline">
                                 <li><a href="my-account.html">My Account</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="/checkout">Checkout</a></li>
+                                {{-- <li><a href="/checkout">Checkout</a></li> --}}
                             </ul>
                         </div>
                         <div class="ct-header-logo">
                             <a href="/">
-                                <img src="assets/images/demo-content/logo.png" alt="Diana Logo">
+                                <img src="assets/images/demo-content/logo.png" alt="JennyShop Logo">
                             </a>
                         </div>
                     </div>
@@ -236,6 +236,133 @@
                 <nav class="navbar yamm">
                     <div class="container">
                         <ul class="nav navbar-nav ct-navbar--fadeIn">
+                            <li class="active">
+                                <a href="/">Home</a>
+                                {{-- <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="yamm-content">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <h5 class="text-uppercase"><strong>Home Pages</strong>
+                                                        <br><small>Select your homepage</small>
+                                                    </h5>
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="index-2.html"><i class="fa fa-angle-right fa-fw"></i> Home - v1</a></li>
+                                                        <li><a href="index2.html"><i class="fa fa-angle-right fa-fw"></i> Home - v2</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <h5 class="text-uppercase"><strong>Headers</strong>
+                                                        <br><small>Select your header</small>
+                                                    </h5>
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="index-paralax.html"><i class="fa fa-angle-right fa-fw"></i> Parallax</a></li>
+                                                        <li><a href="index-2.html"><i class="fa fa-angle-right fa-fw"></i> Slider</a></li>
+                                                        <li><a href="index-video.html"><i class="fa fa-angle-right fa-fw"></i> Video</a></li>
+                                                        <li><a href="index-logo-left.html"><i class="fa fa-angle-right fa-fw"></i> Logo Left</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <h5 class="text-uppercase"><strong>Menu/Top bars</strong>
+                                                        <br><small>Select your bar</small>
+                                                    </h5>
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="index-black-menu.html"><i class="fa fa-angle-right fa-fw"></i> Black Menu</a></li>
+                                                        <li><a href="index-grey-top.html"><i class="fa fa-angle-right fa-fw"></i> Grey Top</a></li>
+                                                        <li><a href="index-both-colour.html"><i class="fa fa-angle-right fa-fw"></i> Menu/Top Colour</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul> --}}
+                            </li>
+                            <li class="">
+                                <a href="/products">Products</a>
+                                <!--        We need here padding-bottom 0 to display properly the image inside this content. Please, don't change paddingBottom.        -->
+                                {{-- <ul class="dropdown-menu ct-u-paddingBottom0">
+                                    <li>
+                                        <div class="yamm-content">
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-6">
+                                                    <h5 class="text-uppercase"><strong>Products</strong><br><small>Jewellery</small></h5>
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="paypal-shop-page.html"><i class="fa fa-angle-right fa-fw"></i> Shop with Paypal integration</a></li>
+                                                        <li><a href="collections.html"><i class="fa fa-angle-right fa-fw"></i> Shop Collection Type 1</a></li>
+                                                        <li><a href="collections2.html"><i class="fa fa-angle-right fa-fw"></i> Shop Collection Type 2</a></li>
+                                                        <li><a href="collections-list.html"><i class="fa fa-angle-right fa-fw"></i> Shop Collection List</a></li>
+                                                        <li><a href="single-product.html"><i class="fa fa-angle-right fa-fw"></i> Single Product</a></li>
+                                                        <li><a href="collections-no-sidebar.html"><i class="fa fa-angle-right fa-fw"></i> Shop No Sidebar</a></li>
+                                                    </ul>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-6">
+                                                    <h5 class="text-uppercase"><strong>Shop Pages</strong><br><small>Shopping</small></h5>
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="my-cart.html"><i class="fa fa-angle-right fa-fw"></i> Cart</a></li>
+                                                        <li><a href="checkout.html"><i class="fa fa-angle-right fa-fw"></i> Checkout</a></li>
+                                                        <li><a href="wishlist.html"><i class="fa fa-angle-right fa-fw"></i> Wishlist</a></li>
+                                                        <li><a href="create-account.html"><i class="fa fa-angle-right fa-fw"></i> Register</a></li>
+                                                        <li><a href="/login"><i class="fa fa-angle-right fa-fw"></i> Login</a></li>
+                                                        <li><a href="lost-password.html"><i class="fa fa-angle-right fa-fw"></i> Lost Password</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4 hidden-sm">
+                                                    <div class="ct-collectionRightPicture">
+                                                        <img src="assets/images/demo-content/main-menu-collection-right-bg.png" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul> --}}
+                            </li>
+                            <li class="">
+                                <a href="/about-us">About Us</a>
+                                {{-- <ul class="dropdown-menu text-uppercase">
+                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="our-mission.html">Our Mission</a></li>
+                                    <li><a href="testimonials.html">Testimonials</a></li>
+                                    <li><a href="pricing.html">Pricing</a></li>
+                                    <li><a href="our-services.html">Our Services</a></li>
+                                    <li><a href="our-team.html">Our Designers</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                </ul> --}}
+                            </li>
+                            <li class="">
+                                <a href="/price-lists">Pricing</a>
+                                {{-- <ul class="dropdown-menu text-uppercase">
+                                    <li class="dropdown-submenu">
+                                        <a href="portfolio-masonry.html">Masonry <i class="fa fa-angle-double-down fa-fw"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="portfolio-masonry.html">Default</a></li>
+                                            <li><a href="portfolio-masonry-column1.html">1 Column</a></li>
+                                            <li><a href="portfolio-masonry-column2.html">2 Columns</a></li>
+                                            <li><a href="portfolio-masonry-column3.html">3 Columns</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="portfolio-left-sidebar.html">Left Sidebar</a></li>
+                                    <li><a href="portfolio-right-sidebar.html">Right Sidebar</a></li>
+                                </ul> --}}
+                            </li>
+                            <li class="">
+                                <a href="/faq">FAQ</a>
+                                {{-- <ul class="dropdown-menu text-uppercase">
+                                    <li class="dropdown-submenu">
+                                        <a href="blog-full-width.html">Full Width <i class="fa fa-angle-double-down fa-fw"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="blog-wide.html">Left Image</a></li>
+                                            <li><a href="blog-full-width.html">Top Image</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="blog-left-sidebar.html">Left Sidebar</a></li>
+                                    <li><a href="blog.html">Right Sidebar</a></li>
+                                    <li><a href="blog-masonry.html">2 Columns</a></li>
+                                </ul> --}}
+                            </li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                        {{-- <ul class="nav navbar-nav ct-navbar--fadeIn">
                             <li class="dropdown active">
                                 <a href="index-2.html">Home</a>
                                 <ul class="dropdown-menu">
@@ -361,7 +488,7 @@
                                 </ul>
                             </li>
                             <li><a href="/contact">Contact</a></li>
-                        </ul>
+                        </ul> --}}
                         <div id="ct-js-navSearch" class="ct-navbar-navSearch navbar-search pull-right">
                             <i class="fa fa-fw fa-search"></i>
                         </div>
@@ -395,7 +522,7 @@
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                             Ups! An error occured. Please try again later.
                                         </div>
-                                        <form class="validateIt"  method="post" action="http://diana.html.themeplayers.net/assets/form/send.php" role="form" data-email-subject="Contact Form" data-show-errors="true">
+                                        <form class="validateIt"  method="post" action="" role="form" data-email-subject="Contact Form" data-show-errors="true">
                                             <div class="input-group">
                                                 <input type="email" class="form-control" placeholder="Your Email Address" required name="field[]">
                                             <span class="input-group-btn">
@@ -441,7 +568,7 @@
                                 <img src="assets/images/demo-content/footer-necklace.png" alt="Golden Necklace">
                             </div>
                         </div>
-                                            <div class="col-sm-4 col-md-3">
+                        <div class="col-sm-4 col-md-3">
                             <h5 class="ct-widgetHeader text-uppercase ct-u-size18">Customer service</h5>
                             <div class="ct-widgetLinks">
                                 <ul class="ct-widgetLinks-list">
@@ -454,12 +581,12 @@
                             </div>
                         </div>
                         <div class="col-sm-4 col-md-3">
-                            <h5 class="ct-widgetHeader text-uppercase ct-u-size18">About Diana Jewellery</h5>
+                            <h5 class="ct-widgetHeader text-uppercase ct-u-size18">About Jenny Jewellery & Cosmetics</h5>
                             <div class="ct-widgetLinks">
                                 <ul class="ct-widgetLinks-list">
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="our-mission.html">Our Mission</a></li>
-                                    <li><a href="blog.html">In the news</a></li>
+                                    <li><a href="/about-us">About Us</a></li>
+                                    <li><a href="/faq">faq</a></li>
+                                    <li><a href="/contact">contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -476,7 +603,7 @@
                         <div class="ct-u-bottomFooterBar ct-u-paddingTop40 ct-u-marginTop50">
                             <div class="col-sm-6">
                                 <div class="ct-rights">
-                                    <a href="http://www.createit.pl/">createIT</a> © Copyright 2015
+                                    {{-- <a href="http://www.createit.pl/">createIT</a> © Copyright 2015 --}}
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -495,7 +622,7 @@
             </footer>
         </div>
     <body>
-        <nav class="nav justify-content-center">
+        <nav class="nav justify-content-center" style="display:none">
           <a class="nav-link" href="/">Home</a>
           <a class="nav-link" href="/about-us">About Us</a>
           <a class="nav-link" href="/products">Products</a>
