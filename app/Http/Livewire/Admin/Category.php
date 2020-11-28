@@ -9,8 +9,8 @@ use Livewire\WithPagination;
 class Category extends Component
 {
     use WithPagination;
-    public $perPage = 10;
     protected $paginationTheme ='bootstrap';
+    public $perPage = 10;
     public $search;
 
     public function mount(){

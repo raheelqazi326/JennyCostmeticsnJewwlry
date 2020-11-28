@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Home')->name('home');
 Route::get('/about-us', 'AboutUs')->name('aboutus');
 Route::get('/products', 'Products')->name('products');
-Route::get('/product', 'Product')->name('product');
+Route::get('/product/{id}', 'Product')->name('product');
 Route::get('/faq', 'Faq')->name('faq');
 Route::get('/checkout', 'Checkout')->name('checkout');
 Route::get('/cart', 'Cart')->name('cart');

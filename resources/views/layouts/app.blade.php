@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="{{asset('assets/css/select2.css')}}">
         <script src="{{asset('assets/js/modernizr.custom.js')}}"></script>
         @livewireStyles
+        @livewireScripts
+        {{-- <script src="{{ asset('vendor/js/turbolinks.js') }}"></script> --}}
+        <script src="{{ asset('vendor/js/alpine.js') }}"></script>
     </head>
     <body class="ct-headroom--scrollUpBoth cssAnimate">
         {{-- <div class="ct-preloader"><div class="ct-preloader-content"></div></div>
@@ -96,7 +99,7 @@
                     <ul class="ct-shopMenuMobile-basketProducts list-unstyled">
                         <li class="ct-shopMenuMobile-basketProduct">
                             <a href="single-product.html">
-                                <img class="pull-left" src="assets/images/demo-content/mobile-shop-cart-ring1.png" alt="">
+                                <img class="pull-left" src="{{ asset('assets/images/demo-content/mobile-shop-cart-ring1.png') }}" alt="">
                                 <div class="ct-shopMenuMobile-basketProductContent">
                                     <div class="ct-shopMenuMobile-basketProductTitle">Round Pave' Color Diamon Ring, Sterling, 1/4 cttw</div>
                                     <div class="ct-shopMenuMobile-basketProductPrice ct-fw-600">$167.00</div>
@@ -106,7 +109,7 @@
                         </li>
                         <li class="ct-shopMenuMobile-basketProduct">
                             <a href="single-product.html">
-                                <img class="pull-left" src="assets/images/demo-content/mobile-shop-cart-ring2.png" alt="">
+                                <img class="pull-left" src="{{ asset('assets/images/demo-content/mobile-shop-cart-ring2.png') }}" alt="">
                                 <div class="ct-shopMenuMobile-basketProductContent">
                                     <div class="ct-shopMenuMobile-basketProductTitle">Barbara Bixby Sterling 18K Gold Citrine or Pink</div>
                                     <div class="ct-shopMenuMobile-basketProductPrice ct-fw-600">$290.99</div>
@@ -132,7 +135,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="assets/images/demo-content/logo.png" alt="JennyShop Logo"> </a>
+                <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/demo-content/logo.png') }}" alt="JennyShop Logo"> </a>
                 <button type="button" class="navbarShop-toggle">
                     <i class="fa fa-fw fa-user"></i>
                 </button>
@@ -155,7 +158,7 @@
                                 <div class="ct-cartItem">
                                     <a href="single-product.html">
                                         <div class="ct-cartItem-image pull-left">
-                                            <img src="assets/images/demo-content/shop-cart-ring1.png" alt="">
+                                            <img src="{{ asset('assets/images/demo-content/shop-cart-ring1.png') }}" alt="">
                                         </div>
                                         <div class="ct-cartItem-title">
                                             Round Pave' Color Diamon Ring, Sterling, 1/4 cttw
@@ -169,7 +172,7 @@
                                 <div class="ct-cartItem">
                                     <a href="single-product.html">
                                         <div class="ct-cartItem-image pull-left">
-                                            <img src="assets/images/demo-content/shop-cart-ring2.png" alt="">
+                                            <img src="{{ asset('assets/images/demo-content/shop-cart-ring2.png') }}" alt="">
                                         </div>
                                         <div class="ct-cartItem-title">
                                             Barbara Bixby Sterling 18K Gold Citrine or Pink
@@ -228,7 +231,7 @@
                         </div>
                         <div class="ct-header-logo">
                             <a href="/">
-                                <img src="assets/images/demo-content/logo.png" alt="JennyShop Logo">
+                                <img src="{{ asset('assets/images/demo-content/logo.png') }}" alt="JennyShop Logo">
                             </a>
                         </div>
                     </div>
@@ -309,7 +312,7 @@
                                                 </div>
                                                 <div class="col-md-4 hidden-sm">
                                                     <div class="ct-collectionRightPicture">
-                                                        <img src="assets/images/demo-content/main-menu-collection-right-bg.png" alt="">
+                                                        <img src="{{ asset('assets/images/demo-content/main-menu-collection-right-bg.png') }}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -436,7 +439,7 @@
                                                 </div>
                                                 <div class="col-md-4 hidden-sm">
                                                     <div class="ct-collectionRightPicture">
-                                                        <img src="assets/images/demo-content/main-menu-collection-right-bg.png" alt="">
+                                                        <img src="{{ asset('assets/images/demo-content/main-menu-collection-right-bg.png') }}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -535,7 +538,7 @@
                             </div>
                             <div class="col-md-5 col-sm-12">
                                 <div class="ct-dividedSection-right">
-                                    <img src="assets/images/demo-content/prefooter-diamond.png" class="text-right pull-left" alt="Diamond Ring">
+                                    <img src="{{ asset('assets/images/demo-content/prefooter-diamond.png') }}" class="text-right pull-left" alt="Diamond Ring">
                                     <h3 class="text-uppercase text-right">Have a jewelry inquiry?</h3>
                                     If you have any  questions regarding our jeweleries please <a href="#">contact us directly</a> or use our contact form to get in touch.
                                     <div class="ct-dividedSection-right-triangle hidden-sm hidden-xs"></div>
@@ -565,7 +568,7 @@
                     <div class="row">
                         <div class="col-md-3 hidden-sm hidden-xs">
                             <div class="ct-footer-image">
-                                <img src="assets/images/demo-content/footer-necklace.png" alt="Golden Necklace">
+                                <img src="{{ asset('assets/images/demo-content/footer-necklace.png') }}" alt="Golden Necklace">
                             </div>
                         </div>
                         <div class="col-sm-4 col-md-3">
@@ -636,37 +639,35 @@
           <a class="nav-link" href="/cart">Cart</a>
           <a class="nav-link" href="/contact">Contact</a>
         </nav>
-        @livewireScripts
-        <script src="{{ asset('vendor/js/turbolinks.js') }}"></script>
-        <script src="{{ asset('vendor/js/alpine.js') }}"></script>
         <!-- JavaScripts files -->
 
-        <script src="assets/js/jquery.min.js"></script>
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.placeholder.min.js"></script>
-        <script src="assets/js/jquery.easing.1.3.js"></script>
-        <script src="assets/js/device.min.js"></script>
-        <script src="assets/js/jquery.browser.min.js"></script>
-        <script src="assets/js/snap.min.js"></script>
-        <script src="assets/js/jquery.appear.js"></script>
+        <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.placeholder.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.easing.1.3.js') }}"></script>
+        <script src="{{ asset('assets/js/device.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.browser.min.js') }}"></script>
+        <script src="{{ asset('assets/js/snap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.appear.js') }}"></script>
+        @stack('scripts')
+        <script src="{{ asset('assets/plugins/headroom/headroom.js') }}"></script>
+        <script src="{{ asset('assets/plugins/headroom/jQuery.headroom.js') }}"></script>
+        <script src="{{ asset('assets/plugins/headroom/init.js') }}"></script>
 
-        <script src="assets/plugins/headroom/headroom.js"></script>
-        <script src="assets/plugins/headroom/jQuery.headroom.js"></script>
-        <script src="assets/plugins/headroom/init.js"></script>
+        <script src="{{ asset('assets/form/js/contact-form.js') }}"></script>
 
-        <script src="assets/form/js/contact-form.js"></script>
-
-        <script src="assets/js/select2/select2.min.js"></script>
-        <script src="assets/js/stacktable/stacktable.js"></script>
+        <script src="{{ asset('assets/js/select2/select2.min.js') }}"></script>
+        <script src="{{ asset('assets/js/stacktable/stacktable.js') }}"></script>
 
 
-        <script src="assets/js/elevate-zoom/jquery.elevatezoom.js"></script>
-        <script src="assets/js/elevate-zoom/init.js"></script>
+        <script src="{{ asset('assets/js/elevate-zoom/jquery.elevatezoom.js') }}"></script>
+        <script src="{{ asset('assets/js/elevate-zoom/init.js') }}"></script>
 
-        <script src="assets/plugins/owl/owl.carousel.min.js"></script>
-        <script src="assets/plugins/owl/init.js"></script>
+        <script src="{{ asset('assets/plugins/owl/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('assets/plugins/owl/thumbnail-init.js') }}"></script>
+        <script src="{{ asset('assets/plugins/owl/init.js') }}"></script>
 
-        <script src="assets/js/main.js"></script>
+        <script src="{{ asset('assets/js/main.js') }}"></script>
     </body>
 </html>
