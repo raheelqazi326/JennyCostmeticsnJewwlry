@@ -17,20 +17,20 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+Route::get('/', 'Home')->name('home');
+Route::get('/about-us', 'AboutUs')->name('aboutus');
+Route::get('/products', 'Products')->name('products');
+Route::get('/product', 'Product')->name('product');
+Route::get('/faq', 'Faq')->name('faq');
+Route::get('/checkout', 'Checkout')->name('checkout');
+Route::get('/cart', 'Cart')->name('cart');
+Route::get('/contact', 'Contact')->name('contact');
+Route::get('/price-lists', 'PriceList')->name('pricellist');
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/', 'Home')->name('home');
     Route::get('Verfication/{email}/{code}', ['App\Http\Controllers\GeneralController', 'verify'])->name('verify');
-    Route::get('/about-us', 'AboutUs');
-    Route::get('/products', 'Products');
-    Route::get('/product', 'Product');
-    Route::get('/faq', 'Faq');
     Route::get('/login', 'Login')->name('login');
-    Route::get('/register', 'Register');
-    Route::get('/checkout', 'Checkout');
-    Route::get('/cart', 'Cart');
-    Route::get('/contact', 'Contact');
-    Route::get('/price-lists', 'PriceList');
-    Route::get('/forgot-password', 'ForgotPassword');
+    Route::get('/register', 'Register')->name('register');
+    Route::get('/forgot-password', 'ForgotPassword')->name('forgot.password');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {

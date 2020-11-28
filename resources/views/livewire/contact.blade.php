@@ -53,35 +53,48 @@
                         Ups! An error occured. Please try again later.
                     </div>
 
-                    <form class="form-horizontal contactForm validateIt" method="post" action="" role="form" data-email-subject="Contact Form" data-show-errors="true">
+                    <form class="form-horizontal" wire:submit.prevent="save">
+                        @include('layouts.messages')
                         <div class="form-group">
                             <label for="fullname" class="col-sm-2 control-label">Full Name*: </label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="fullname" name="field[]" placeholder="Full Name" required>
+                                <input type="text" class="form-control" id="fullname" wire:model.lazy="fullname" placeholder="Full Name">
+                                @error('fullname')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="company" class="col-sm-2 control-label">Company:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="field[]" id="company" placeholder="Company">
+                                <input type="text" class="form-control" wire:model.lazy="company" id="company" placeholder="Company">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-2 control-label">Email*:</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" name="field[]" id="email" placeholder="Email" required>
+                                <input type="email" class="form-control" wire:model.lazy="email" id="email" placeholder="Email">
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="phone" class="col-sm-2 control-label">Phone:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="field[]" id="phone" placeholder="Phone">
+                                <input type="text" class="form-control" wire:model.lazy="phone" id="phone" placeholder="Phone">
+                                @error('phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="message" class="col-sm-2 control-label">Message*:</label>
                             <div class="col-sm-10">
-                                <textarea id="message" class="form-control" name="field[]" rows="6" placeholder="Message" required></textarea>
+                                <textarea id="message" class="form-control" wire:model.lazy="message" rows="6" placeholder="Message"></textarea>
+                                @error('message')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
