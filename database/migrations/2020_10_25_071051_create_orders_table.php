@@ -18,9 +18,9 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->double('cost', 15, 8);
-            $table->integer('coupon_id')->unsigned();
+            $table->integer('coupon_id')->unsigned()->nullable();
             $table->integer('delivery_detail_id')->unsigned();
-            $table->tinyInteger('payment_type_id')->unsigned();
+            $table->tinyInteger('payment_type_id')->unsigned()->nullable();
             $table->tinyInteger('booking_status_id')->unsigned();
             $table->timestamps();
         });

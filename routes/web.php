@@ -26,6 +26,11 @@ Route::get('/checkout', 'Checkout')->name('checkout');
 Route::get('/cart', 'Cart')->name('cart');
 Route::get('/contact', 'Contact')->name('contact');
 Route::get('/price-lists', 'PriceList')->name('pricellist');
+Route::get('/logout', function(){
+    auth()->logout();
+    return redirect()->route('home');
+})->name('logout');
+Route::get('/my-account', 'Contact')->name('my-account');
 Route::group(['middleware' => 'guest'], function () {
     Route::get('Verfication/{email}/{code}', ['App\Http\Controllers\GeneralController', 'verify'])->name('verify');
     Route::get('/login', 'Login')->name('login');

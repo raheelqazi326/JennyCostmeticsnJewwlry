@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Contact AS ContactModel;
 use App\Models\Phone;
 use App\Models\Question;
+use Mail;
 
 class Contact extends Component
 {
@@ -13,7 +14,7 @@ class Contact extends Component
     protected $rules = [
         "fullname" => "required|max:40",
         "email" => "required|email|max:40",
-        "phone" => "required|numeric|digits:11",
+        "phone" => "required|numeric|digits_between:9,11",
         "message" => "required"
     ];
 
@@ -44,6 +45,17 @@ class Contact extends Component
         $question->refModule_id = $contact->id;
         $question->question = $this->message;
         $question->save();
+        $data = [
+            'contact' => $contact,
+            'phone' => $phone,
+            'question' => $question
+        ];
+
+        Mail::send('mail.contact', $data, function ($message) use ($data) {
+            $message->sender('emailforhnh@gmail.com', 'JennyShop');
+            $message->to('admin@jennyShop.com', 'JennyShop');
+            $message->subject('Contact');
+        });
         session()->flash('message', 'Your Message has been received. You will get reply soon');
         return redirect()->route('contact');
     }

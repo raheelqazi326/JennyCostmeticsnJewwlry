@@ -250,7 +250,7 @@ class CountrySeeder extends Seeder
         foreach ($countryArray as $key => $value) {
             $country = new Country;
             $country->name = $value['name'];
-            $country->iso_code = $value['iso_code']; 
+            $country->iso_code = $key; 
             $country->phone_code = $value['code'];
             $country->save();
         }

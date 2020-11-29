@@ -17,8 +17,8 @@ class CreateContactDetailsTable extends Migration
             $table->tinyIncrements('id');
             $table->string('line_1', 255);
             $table->string('line_2', 255);
-            $table->smallInteger('city_id')->unsigned();
-            $table->string('zipcode', 10);
+            $table->smallInteger('city_id')->unsigned()->nullable();
+            $table->string('zipcode', 10)->nullable();
             $table->string('email', 25);
             $table->timestamps();
         });

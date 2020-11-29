@@ -86,45 +86,17 @@
         <div class="ct-shopMenuMobile">
             <nav class="ct-shopMenuMobile-navbar">
                 <ul class="list-unstyled">
-                    <li><a href="/login"><i class="fa fa-user fa-fw"></i> Login</a></li>
-                    <li><a href="create-account.html"><i class="fa fa-pencil fa-fw"></i> Create an account</a></li>
-                    <li><a href="my-account.html"><i class="fa fa-cog fa-fw"></i> My Account</a></li>
-                    <li><a href="wishlist.html"><i class="fa fa-edit fa-fw"></i> Wishlist</a></li>
+                    @if (!auth()->check())
+                        <li><a href="/login"><i class="fa fa-user fa-fw"></i> Login</a></li>
+                        <li><a href="create-account.html"><i class="fa fa-pencil fa-fw"></i> Create an account</a></li>
+                    @else
+                        <li><a href="my-account.html"><i class="fa fa-cog fa-fw"></i> My Account</a></li>
+                        <li><a href="wishlist.html"><i class="fa fa-edit fa-fw"></i> Wishlist</a></li>
+                    @endif
                     {{-- <li><a href="checkout.html"><i class="fa fa-archive fa-fw"></i> Checkout</a></li> --}}
                 </ul>
             </nav>
-            <div class="ct-shopMenuMobile-basket">
-                <a href="my-cart.html"><i class="fa fa-shopping-cart fa-fw"></i> My Basket <span class="ct-topBar-basket-quantity">(3 items)</span></a>
-                <div class="ct-shopMenuMobile-basketContainer">
-                    <ul class="ct-shopMenuMobile-basketProducts list-unstyled">
-                        <li class="ct-shopMenuMobile-basketProduct">
-                            <a href="single-product.html">
-                                <img class="pull-left" src="{{ asset('assets/images/demo-content/mobile-shop-cart-ring1.png') }}" alt="">
-                                <div class="ct-shopMenuMobile-basketProductContent">
-                                    <div class="ct-shopMenuMobile-basketProductTitle">Round Pave' Color Diamon Ring, Sterling, 1/4 cttw</div>
-                                    <div class="ct-shopMenuMobile-basketProductPrice ct-fw-600">$167.00</div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                        <li class="ct-shopMenuMobile-basketProduct">
-                            <a href="single-product.html">
-                                <img class="pull-left" src="{{ asset('assets/images/demo-content/mobile-shop-cart-ring2.png') }}" alt="">
-                                <div class="ct-shopMenuMobile-basketProductContent">
-                                    <div class="ct-shopMenuMobile-basketProductTitle">Barbara Bixby Sterling 18K Gold Citrine or Pink</div>
-                                    <div class="ct-shopMenuMobile-basketProductPrice ct-fw-600">$290.99</div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="ct-shopMenuMobile-basketWrap ct-shopMenuMobile-subTotal ct-fw-600">
-                        <div class="pull-left text-uppercase">Subtotal</div>
-                        <div class="pull-right">$457.99</div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
+            {{-- @livewire('cart-widget') --}}
         </div>
         <div id="ct-js-wrapper" class="ct-pageWrapper">
             <!-- navbar + logo menu -->
@@ -147,54 +119,27 @@
                     <div class="ct-topBar-navigation pull-left">
                         <ul class="list-unstyled">
                             <li><i class="fa fa-fw fa-phone"></i> Call us: (012) 345-6789</li>
-                            <li><a href="/login"><i class="fa fa-fw fa-user"></i> Login</a></li>
-                            <li><a href="/register"><i class="fa fa-fw fa-pencil"></i> Create an account</a></li>
+                            @if (!auth()->check())
+                                <li>
+                                    <a href="{{ route('login') }}"><i class="fa fa-fw fa-user"></i> Login</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('register') }}"><i class="fa fa-fw fa-pencil"></i> Create an account</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="{{ route('my-account') }}"><i class="fa fa-fw fa-user"></i> My Account</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('logout') }}"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                     <div class="pull-right">
-                        <div class="ct-topBar-basket">
-                            <a href="/cart"><span class="ct-topBar-basket-cart"><i class="fa fa-fw fa-shopping-cart"></i> Cart: </span><span class="ct-topBar-basket-quantity">3 item(s)</span><span class="ct-topBar-basket-price"> - $0.00</span></a>
-                            <div class="ct-topBar-basket-info">
-                                <div class="ct-cartItem">
-                                    <a href="single-product.html">
-                                        <div class="ct-cartItem-image pull-left">
-                                            <img src="{{ asset('assets/images/demo-content/shop-cart-ring1.png') }}" alt="">
-                                        </div>
-                                        <div class="ct-cartItem-title">
-                                            Round Pave' Color Diamon Ring, Sterling, 1/4 cttw
-                                        </div>
-                                        <div class="ct-cartItem-price">
-                                            $167.00
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </a>
-                                </div>
-                                <div class="ct-cartItem">
-                                    <a href="single-product.html">
-                                        <div class="ct-cartItem-image pull-left">
-                                            <img src="{{ asset('assets/images/demo-content/shop-cart-ring2.png') }}" alt="">
-                                        </div>
-                                        <div class="ct-cartItem-title">
-                                            Barbara Bixby Sterling 18K Gold Citrine or Pink
-                                        </div>
-                                        <div class="ct-cartItem-price">
-                                            $290.99
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </a>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="ct-cartSubtotal">
-                                    <div class="pull-left ct-fw-600">Subtotal</div>
-                                    <div class="pull-right ct-fw-600">$457.99</div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="ct-cartGoNext text-uppercase ct-u-paddingBoth20">
-                                    <a class="btn btn-default ct-u-width-49pc" href="/cart" role="button">View Cart <i class="fa fa-angle-double-right fa-fw"></i></a>
-                                    <a class="btn btn-default pull-right ct-u-width-49pc" href="{{ url('/checkout') }}" role="button">Checkout <i class="fa fa-angle-double-right fa-fw"></i></a>
-                                </div>
-                            </div>
-                            {{-- <div class="btn-group">
+                        @livewire('cart-widget')
+                        {{-- <div class="ct-topBar-basket">
+                            <div class="btn-group">
                                 <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     EN <span class="caret"></span>
                                 </button>
@@ -213,8 +158,8 @@
                                     <li><a href="#">EUR €</a></li>
                                     <li><a href="#">GBP £</a></li>
                                 </ul>
-                            </div> --}}
-                        </div>
+                            </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -224,8 +169,10 @@
                     <div class="ct-header ct-header--secondary ct-u-paddingTop30 ct-u-paddingBottom50">
                         <div class="ct-header-navigation">
                             <ul class="list-unstyled list-inline">
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
+                                @if (auth()->check())
+                                    <li><a href="my-account.html">My Account</a></li>
+                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                @endif
                                 {{-- <li><a href="/checkout">Checkout</a></li> --}}
                             </ul>
                         </div>
@@ -508,6 +455,96 @@
                     </div>
                 </nav>
             </div>
+            @if (Route::currentRouteName() == "home")
+                <div class="ct-js-owl owl-carousel ct-mainCarousel ct-mainCarousel--arrowsMiddle" data-snap-ignore="true" data-pagination="false" data-items="1" data-autoPlay="false" data-bg="true" data-animations="true" data-height="525" data-navigation="true">
+                    <div class="item" data-bg="./assets/images/demo-content/slider-image.jpg">
+                        <div class="inner">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <h1 class="ct-u-colorBlack">
+                                            <span class="animated" data-fx="fadeIn">Customized Diamond</span>
+                                            <br>
+                                            <span class="ct-u-colorWhite animated" data-fx="fadeIn" data-time="200">& Wedding Rings</span></h1>
+                                        <div class="text-center ct-u-paddingTop15 ct-u-paddingBottom30">
+                                            <hr class="hr-slider animated" data-fx="fadeIn">
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="btn btn-blackTransparent animated" data-fx="fadeInUp" href="/products" role="button">Browse Collection <i class="fa fa-angle-double-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/products" class="ct-btn-shadowBar text-left animated" data-fx="fadeInUp">
+                                <div class="container">
+                                    <i class="fa fa-angle-right fa-fw"></i> View all Nickelodeon Offers
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item" data-bg="./assets/images/demo-content/slider-image2.jpg">
+                        <div class="inner">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-4 col-sm-12">
+                                        <h1 class="ct-u-colorWhite text-right animated" data-fx="fadeInRight">Experience The Breathtaking</h1>
+                                        <h2 class="ct-u-colorWhite text-right animated" data-fx="fadeInRightBig">Interchangable Collections</h2>
+                                        <div class="text-right ct-mobileCenter ct-u-paddingTop40">
+                                            <a class="btn btn-blackTransparent btn-blackTransparent--white animated" data-fx="bounceInUp" href="/products" role="button">Browse Collection <i class="fa fa-angle-double-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/products" class="ct-btn-shadowBar text-left animated" data-fx="fadeInUp">
+                                <div class="container">
+                                    <i class="fa fa-angle-right fa-fw"></i> View all Nickelodeon Offers
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item" data-bg="./assets/images/demo-content/slider-image3.jpg">
+                        <div class="inner">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-4 col-sm-12">
+                                        <h1 class="text-right ct-u-colorWhite animated" data-fx="fadeInRight">Inspired By Past, Designed</h1>
+                                        <h2 class="text-right ct-u-colorWhite animated" data-fx="fadeInRightBig">For Future</h2>
+                                        <div class="text-right ct-mobileCenter ct-u-paddingTop40">
+                                            <a class="btn btn-blackTransparent btn-blackTransparent--white animated" data-fx="bounceInUp" href="/products" role="button">Browse Collection <i class="fa fa-angle-double-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/products" class="ct-btn-shadowBar text-left animated" data-fx="fadeInUp">
+                                <div class="container">
+                                    <i class="fa fa-angle-right fa-fw"></i> View all Nickelodeon Offers
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item" data-bg="./assets/images/demo-content/slider-image4.jpg">
+                        <div class="inner">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 text-left">
+                                        <h1 class="ct-u-colorWhite animated" data-fx="fadeInLeft">Unique Jewelry</h1>
+                                        <h2 class="ct-u-colorWhite animated" data-fx="fadeInLeftBig">Large Selection</h2>
+                                        <div class="text-left ct-mobileCenter ct-u-paddingTop40">
+                                            <a class="btn btn-transparentWhite animated" data-fx="bounceInUp" href="/products" role="button">Browse Collection <i class="fa fa-angle-double-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/products" class="ct-btn-shadowBar text-left animated" data-fx="fadeInUp">
+                                <div class="container">
+                                    <i class="fa fa-angle-right fa-fw"></i> View all Products
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            <div class="ct-contentWrapper">
                 {{ $slot }}
                 <!-- PreFOOTER -->
                 <div class="container">

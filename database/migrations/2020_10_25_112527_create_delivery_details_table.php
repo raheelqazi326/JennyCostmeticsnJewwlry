@@ -15,10 +15,14 @@ class CreateDeliveryDetailsTable extends Migration
     {
         Schema::create('delivery_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('person_name', 150);
-            $table->string('line_1', 255);
-            $table->string('line_2', 255);
-            $table->smallInteger('city_id')->unsigned();
+            $table->string('person_name', 60);
+            $table->string('email', 60);
+            $table->bigInteger('phone', 12);
+            $table->string('line_1', 150);
+            $table->string('line_2', 150);
+            $table->string('city', 60);
+            $table->string('state', 60);
+            $table->string('country', 60);
             $table->string('zipcode', 10);
             $table->timestamps();
         });
