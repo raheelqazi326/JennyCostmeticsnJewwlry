@@ -35,6 +35,9 @@
         body{           
             user-select: none;
         }
+        .bglight{
+            background-color: #fff;
+        }
     </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -165,6 +168,14 @@
                                 <i class="nav-icon far fa-circle"></i>
                                 <p>
                                     Product
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/orders" class="nav-link">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>
+                                    Order
                                 </p>
                             </a>
                         </li>

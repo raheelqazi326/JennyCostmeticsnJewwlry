@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/', 'Home')->name('admin.home');
         // Category
         Route::get('category', 'Category')->name('admin.category');
+        Route::get('orders', 'Order')->name('admin.orders');
         Route::get('/category/add', 'AddCategory')->name('admin.addcategory');
         Route::get('/category/{id}', 'EditCategory')->name('admin.editcategory');
         // Product

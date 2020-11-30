@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Product</h1>
+                    <h1 class="m-0 text-dark">Order</h1>
                 </div><!-- col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
-                        <li class="breadcrumb-item active">Product</li>
+                        <li class="breadcrumb-item active">Order</li>
                     </ol>
                 </div><!-- col -->
             </div><!-- row -->
@@ -37,8 +37,8 @@
                                             <option value="25">25</option>
                                             <option value="50">50</option>
                                             <option value="100">100</option>
-                                            @if (!empty($products))
-                                            <option value="{{$products->total()}}">All</option>
+                                            @if (!empty($orders))
+                                            <option value="{{$orders->total()}}">All</option>
                                             @endif
                                         </select>
                                         entries
@@ -75,61 +75,84 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Descripiton</th>
-                                        <th>Stock</th>
-                                        <th>Price</th>
-                                        <th>Category</th>
-                                        <th>Main Category</th>
+                                        <th>User Name</th>
+                                        <th>User Email</th>
+                                        <th>Cost</th>
+                                        <th>Items</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (!empty($products))
-                                        @foreach ($products as $product)
+                                    @if (!empty($orders))
+                                        @foreach ($orders as $order)
                                             <tr>
-                                                <td>{{ $loop->index+$products->firstItem() }}</td>
-                                                <td>{{ $product->name }}</td>
-                                                <td>{{ $product->description }}</td>
-                                                <td>{{ $product->stock }}</td>
-                                                <td>{{ $product->price }}</td>
-                                                <td>{{ $product->category->name }}</td>
-                                                <td>{{ $product->category->main_category }}</td>
-                                                <td><span class="badge badge-{{ $product->status=='active'?'success':'danger' }}">{{ ucfirst($product->status) }}</span></td>
+                                                <td>{{ $loop->index+$orders->firstItem() }}</td>
+                                                <td>{{ $order->user->name }}</td>
+                                                <td>{{ $order->user->email }}</td>
+                                                <td>{{ $order->cost }}</td>
+                                                <td><a href="" wire:click.prevent="$emit('ShowProduct', {{$order->items}})" class="text-primary">Show Items</a></td>
                                                 <td>
-                                                    <a href="{{ route('admin.editproduct', ['id'=>$product->id]) }}">
-                                                        <i class="fas fa-edit text-warning" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0)" wire:click="delete({{$product->id}})">
-                                                        <i class="fas fa-trash text-danger ml-2" aria-hidden="true"></i>
-                                                    </a>
+                                                    @php
+                                                        switch ($order->status->status) {
+                                                            case 'pending':
+                                                                $status = 'secondary';
+                                                                break;
+                                                            case 'confirm':
+                                                                $status = 'warning';
+                                                                break;
+                                                            case 'dispatch':
+                                                                $status = 'primary';
+                                                                break;
+                                                            case 'deliver':
+                                                                $status = 'success';
+                                                                break;
+                                                            case 'deliver':
+                                                                $status = 'success';
+                                                                break;
+                                                            default:
+                                                                $status = 'danger';
+                                                                break;
+                                                        }
+                                                    @endphp
+                                                    <span class="badge badge-{{ $status }}">
+                                                        {{ ucfirst($order->status->status) }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="btn btn-warning" wire:click="change_status({{$order->id}})">
+                                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                                        Change Status
+                                                    </span>
+                                                    <span class="btn btn-danger" wire:click="change_status({{$order->id}})">
+                                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        Delete
+                                                    </span>
                                                 </td>
                                             </tr>
                                         @endforeach    
                                     @endif
-
                                 </tbody>
                             </table>
                         </div>
                         <!-- card-body -->
                         <!-- card-footer -->
                         <div class="card-footer">
-                            @if (!empty($products))
+                            @if (!empty($orders))
                                 <div class="card-tools row">
                                     <div class="col-6">
                                         <p>
                                             Showing 
-                                            <b>{{$products->firstItem()}}</b>
+                                            <b>{{$orders->firstItem()}}</b>
                                             to 
-                                            <b>{{$products->lastItem()}}</b>
+                                            <b>{{$orders->lastItem()}}</b>
                                             out of 
-                                            <b>{{$products->total()}}</b>
+                                            <b>{{$orders->total()}}</b>
                                         </p>
                                     </div>
                                     <div class="col-6 ">
                                         <div class="float-right">
-                                        {{$products->links()}}
+                                        {{$orders->links()}}
                                         </div>
                                     </div>
                                 </div>
@@ -143,4 +166,4 @@
             <!-- row -->
         </div>
     </section>
-</div>  
+</div>
