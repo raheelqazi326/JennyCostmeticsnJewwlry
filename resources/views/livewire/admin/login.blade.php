@@ -27,7 +27,7 @@
             @enderror
             <div class="row mt-3">
                 <div class="col-8">
-                    <a href="#">forgot password</a>
+                    {{-- <a href="#">forgot password</a> --}}
                     {{-- <div class="icheck-primary">
                         <input type="checkbox" id="remember" wire:model="form.remember_me" value='on'>
                         <label for="remember">
